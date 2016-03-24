@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane minHeight="600.0" minWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <SplitPane dividerPositions="0.617056856187291" orientation="VERTICAL" prefHeight="600.0" prefWidth="500.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="342.0" prefWidth="498.0">
+               <children>
+                  <Button layoutX="69.0" layoutY="258.0" minWidth="126.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Head to Head" />
+                  <Button layoutX="69.0" layoutY="300.0" minWidth="126.0" mnemonicParsing="false" text="Match Statistics" />
+                  <Button layoutX="290.0" layoutY="222.0" minWidth="126.0" mnemonicParsing="false" text="Coach Information" />
+                  <Button layoutX="290.0" layoutY="259.0" mnemonicParsing="false" text="Sponsor Information" />
+                  <Button layoutX="291.0" layoutY="299.0" minHeight="25.0" minWidth="126.0" mnemonicParsing="false" text="Referee Information" />
+                  <Button layoutX="69.0" layoutY="221.0" minWidth="126.0" mnemonicParsing="false" text="Player Information" />
+                  <Label layoutX="203.0" layoutY="176.0" prefHeight="27.0" prefWidth="90.0" text="User Panel">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="204.0" layoutY="29.0" prefHeight="40.0" prefWidth="90.0" text="Rufus">
+                     <font>
+                        <Font name="System Bold Italic" size="26.0" />
+                     </font>
+                  </Label>
+                  <Text layoutX="38.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contains a Database System for the Association of Tennis Professionals (ATP) having an extensive collection of statistics and facts to provide a perfect guide through the world of professional tennis." textAlignment="CENTER" wrappingWidth="278.9921875">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="122.0" fitWidth="149.0" layoutX="335.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../logo1.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label layoutX="120.0" layoutY="69.0" prefHeight="17.0" prefWidth="65.0" text="Username" />
+                  <Label layoutX="120.0" layoutY="105.0" prefHeight="17.0" prefWidth="65.0" text="Password" />
+                  <Label layoutX="195.0" layoutY="19.0" prefHeight="27.0" prefWidth="116.0" text="Admin Panel">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="194.0" layoutY="64.0" />
+                  <PasswordField layoutX="194.0" layoutY="101.0" />
+                  <Button layoutX="195.0" layoutY="141.0" mnemonicParsing="false" text="Login" />
+                  <Separator layoutY="185.0" prefHeight="0.0" prefWidth="500.0" />
+                  <Label layoutX="48.0" layoutY="197.0" text="\@ Copyrights Reserved                          Mansi Goel, Ayush Agarwal" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
