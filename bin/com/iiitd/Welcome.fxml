@@ -9,19 +9,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane minHeight="600.0" minWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane minHeight="600.0" minWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iiitd.WelcomeController">
    <children>
       <SplitPane dividerPositions="0.617056856187291" orientation="VERTICAL" prefHeight="600.0" prefWidth="500.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="342.0" prefWidth="498.0">
                <children>
-                  <Button layoutX="69.0" layoutY="258.0" minWidth="126.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Head to Head" />
-                  <Button layoutX="69.0" layoutY="300.0" minWidth="126.0" mnemonicParsing="false" text="Match Statistics" />
-                  <Button layoutX="290.0" layoutY="222.0" minWidth="126.0" mnemonicParsing="false" text="Coach Information" />
-                  <Button layoutX="290.0" layoutY="259.0" mnemonicParsing="false" text="Sponsor Information" />
-                  <Button layoutX="291.0" layoutY="299.0" minHeight="25.0" minWidth="126.0" mnemonicParsing="false" text="Referee Information" />
-                  <Button layoutX="69.0" layoutY="221.0" minWidth="126.0" mnemonicParsing="false" text="Player Information" />
+                  <Button fx:id="hth" layoutX="69.0" layoutY="258.0" minWidth="126.0" mnemonicParsing="false" onAction="#headtohead" prefHeight="25.0" prefWidth="108.0" text="Head to Head" />
+                  <Button fx:id="mstats" layoutX="69.0" layoutY="300.0" minWidth="126.0" mnemonicParsing="false" onAction="#matchstats" text="Match Statistics" />
+                  <Button fx:id="cinfo" layoutX="290.0" layoutY="222.0" minWidth="126.0" mnemonicParsing="false" onAction="#coachinfo" text="Coach Information" />
+                  <Button fx:id="sinfo" layoutX="290.0" layoutY="259.0" mnemonicParsing="false" onAction="#sponsorinfo" text="Sponsor Information" />
+                  <Button fx:id="rinfo" layoutX="291.0" layoutY="299.0" minHeight="25.0" minWidth="126.0" mnemonicParsing="false" onAction="#refereeinfo" text="Referee Information" />
+                  <Button fx:id="pinfo" layoutX="69.0" layoutY="221.0" minWidth="126.0" mnemonicParsing="false" onAction="#playerinfo" text="Player Information" />
                   <Label layoutX="203.0" layoutY="176.0" prefHeight="27.0" prefWidth="90.0" text="User Panel">
                      <font>
                         <Font name="System Bold" size="18.0" />
@@ -53,9 +52,9 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="194.0" layoutY="64.0" />
-                  <PasswordField layoutX="194.0" layoutY="101.0" />
-                  <Button layoutX="195.0" layoutY="141.0" mnemonicParsing="false" text="Login" />
+                  <TextField fx:id="username" layoutX="194.0" layoutY="64.0" />
+                  <PasswordField fx:id="password" layoutX="194.0" layoutY="101.0" />
+                  <Button fx:id="login" layoutX="195.0" layoutY="141.0" mnemonicParsing="false" onAction="#lin" text="Login" />
                   <Separator layoutY="185.0" prefHeight="0.0" prefWidth="500.0" />
                   <Label layoutX="48.0" layoutY="197.0" text="\@ Copyrights Reserved                          Mansi Goel, Ayush Agarwal" />
                </children>

@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="600.0" minWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="600.0" minWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iiitd.AdminController">
    <children>
       <Text layoutX="158.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Admin !" wrappingWidth="188.703125">
          <font>
             <Font name="System Bold Italic" size="22.0" />
          </font>
       </Text>
-      <Button layoutX="403.0" layoutY="38.0" mnemonicParsing="false" text="Logout">
+      <Button fx:id="logout" layoutX="403.0" layoutY="38.0" mnemonicParsing="false" onAction="#lout" text="Logout">
          <font>
             <Font size="14.0" />
          </font>
@@ -31,11 +31,11 @@
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Text>
-                        <Button layoutX="203.0" layoutY="303.0" mnemonicParsing="false" text="Add Player">
+                        <Button fx:id="padd" layoutX="203.0" layoutY="303.0" mnemonicParsing="false" onAction="#addp" text="Add Player">
                            <font>
                               <Font size="14.0" />
                            </font></Button>
-                        <Button layoutX="180.0" layoutY="359.0" mnemonicParsing="false" text="Add Another Player">
+                        <Button fx:id="padd1" layoutX="180.0" layoutY="359.0" mnemonicParsing="false" onAction="#addp1" text="Add Another Player">
                            <font>
                               <Font size="14.0" />
                            </font></Button>
@@ -59,11 +59,11 @@
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="271.0" layoutY="55.0" prefHeight="25.0" prefWidth="152.0" />
-                        <DatePicker layoutX="271.0" layoutY="132.0" prefHeight="25.0" prefWidth="151.0" />
-                        <ComboBox layoutX="272.0" layoutY="93.0" prefWidth="150.0" />
-                        <ComboBox layoutX="272.0" layoutY="172.0" prefWidth="150.0" />
-                        <ComboBox layoutX="272.0" layoutY="213.0" prefWidth="150.0" />
+                        <TextField fx:id="pname" layoutX="271.0" layoutY="55.0" prefHeight="25.0" prefWidth="152.0" />
+                        <DatePicker fx:id="pdob" layoutX="271.0" layoutY="132.0" prefHeight="25.0" prefWidth="151.0" />
+                        <ComboBox fx:id="pcountry" layoutX="272.0" layoutY="93.0" prefWidth="150.0" />
+                        <ComboBox fx:id="ppoints" layoutX="272.0" layoutY="172.0" prefWidth="150.0" />
+                        <ComboBox fx:id="ppro" layoutX="272.0" layoutY="213.0" prefWidth="150.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -102,22 +102,22 @@
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Text>
-                        <Button layoutX="204.0" layoutY="302.0" mnemonicParsing="false" text="Add Match">
+                        <Button fx:id="madd" layoutX="204.0" layoutY="302.0" mnemonicParsing="false" onAction="#addm" text="Add Match">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button layoutX="177.0" layoutY="355.0" mnemonicParsing="false" text="Add Another Match">
+                        <Button fx:id="madd1" layoutX="177.0" layoutY="355.0" mnemonicParsing="false" onAction="#addm1" text="Add Another Match">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <ComboBox layoutX="256.0" layoutY="50.0" prefWidth="150.0" />
-                        <ComboBox layoutX="256.0" layoutY="85.0" prefWidth="150.0" />
-                        <ComboBox layoutX="256.0" layoutY="120.0" prefWidth="150.0" />
-                        <ComboBox layoutX="256.0" layoutY="155.0" prefWidth="150.0" />
-                        <ComboBox layoutX="256.0" layoutY="193.0" prefWidth="150.0" />
-                        <ComboBox layoutX="256.0" layoutY="229.0" prefWidth="150.0" />
+                        <ComboBox fx:id="mname" layoutX="256.0" layoutY="50.0" prefWidth="150.0" />
+                        <ComboBox fx:id="myear" layoutX="256.0" layoutY="85.0" prefWidth="150.0" />
+                        <ComboBox fx:id="mpwon" layoutX="256.0" layoutY="120.0" prefWidth="150.0" />
+                        <ComboBox fx:id="mplost" layoutX="256.0" layoutY="155.0" prefWidth="150.0" />
+                        <ComboBox fx:id="mround" layoutX="256.0" layoutY="193.0" prefWidth="150.0" />
+                        <ComboBox fx:id="mreferee" layoutX="256.0" layoutY="229.0" prefWidth="150.0" />
                      </children></AnchorPane>
               </content>
             </Tab>
@@ -155,18 +155,18 @@
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="258.0" layoutY="59.0" />
-                        <DatePicker layoutX="258.0" layoutY="95.0" prefHeight="25.0" prefWidth="150.0" />
-                        <ComboBox layoutX="258.0" layoutY="168.0" prefWidth="150.0" />
-                        <ComboBox layoutX="258.0" layoutY="132.0" prefWidth="150.0" />
-                        <DatePicker layoutX="258.0" layoutY="204.0" prefHeight="25.0" prefWidth="151.0" />
-                        <DatePicker layoutX="258.0" layoutY="240.0" prefHeight="25.0" prefWidth="152.0" />
-                        <Button layoutX="204.0" layoutY="310.0" mnemonicParsing="false" text="Add Coach">
+                        <TextField fx:id="cname" layoutX="258.0" layoutY="59.0" />
+                        <DatePicker fx:id="cdob" layoutX="258.0" layoutY="95.0" prefHeight="25.0" prefWidth="150.0" />
+                        <ComboBox fx:id="cplayer" layoutX="258.0" layoutY="168.0" prefWidth="150.0" />
+                        <ComboBox fx:id="ccountry" layoutX="258.0" layoutY="132.0" prefWidth="150.0" />
+                        <DatePicker fx:id="csince" layoutX="258.0" layoutY="204.0" prefHeight="25.0" prefWidth="151.0" />
+                        <DatePicker fx:id="ctill" layoutX="258.0" layoutY="240.0" prefHeight="25.0" prefWidth="152.0" />
+                        <Button fx:id="cadd" layoutX="204.0" layoutY="310.0" mnemonicParsing="false" onAction="#addc" text="Add Coach">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button layoutX="177.0" layoutY="363.0" mnemonicParsing="false" text="Add Another Coach">
+                        <Button fx:id="cadd1" layoutX="177.0" layoutY="363.0" mnemonicParsing="false" onAction="#addc1" text="Add Another Coach">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -193,15 +193,15 @@
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="250.0" layoutY="82.0" />
-                        <DatePicker layoutX="250.0" layoutY="131.0" prefHeight="25.0" prefWidth="150.0" />
-                        <ComboBox layoutX="250.0" layoutY="179.0" prefWidth="150.0" />
-                        <Button layoutX="198.0" layoutY="263.0" mnemonicParsing="false" text="Add Referee">
+                        <TextField fx:id="rname" layoutX="250.0" layoutY="82.0" />
+                        <DatePicker fx:id="rdob" layoutX="250.0" layoutY="131.0" prefHeight="25.0" prefWidth="150.0" />
+                        <ComboBox fx:id="rcountry" layoutX="250.0" layoutY="179.0" prefWidth="150.0" />
+                        <Button fx:id="radd" layoutX="198.0" layoutY="263.0" mnemonicParsing="false" onAction="#addr" text="Add Referee">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button layoutX="174.0" layoutY="325.0" mnemonicParsing="false" text="Add Another Referee">
+                        <Button fx:id="radd1" layoutX="174.0" layoutY="325.0" mnemonicParsing="false" onAction="#addr1" text="Add Another Referee">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -228,19 +228,19 @@
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="257.0" layoutY="78.0" />
-                        <ComboBox layoutX="257.0" layoutY="126.0" prefWidth="150.0" />
-                        <DatePicker layoutX="257.0" layoutY="177.0" prefHeight="25.0" prefWidth="151.0" />
-                        <Button layoutX="194.0" layoutY="276.0" mnemonicParsing="false" text="Add Sponsor">
+                        <TextField fx:id="sname" layoutX="257.0" layoutY="78.0" />
+                        <ComboBox fx:id="splayer" layoutX="257.0" layoutY="126.0" prefWidth="150.0" />
+                        <Button fx:id="sadd" layoutX="194.0" layoutY="276.0" mnemonicParsing="false" onAction="#adds" text="Add Sponsor">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button layoutX="167.0" layoutY="333.0" mnemonicParsing="false" text="Add Another Sponsor">
+                        <Button fx:id="sadd1" layoutX="167.0" layoutY="333.0" mnemonicParsing="false" onAction="#adds1" text="Add Another Sponsor">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Button>
+                        <ComboBox fx:id="syear" layoutX="257.0" layoutY="176.0" prefWidth="150.0" />
                      </children></AnchorPane>
               </content>
             </Tab>
@@ -263,10 +263,10 @@
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="258.0" layoutY="67.0" />
-                        <ComboBox layoutX="258.0" layoutY="114.0" prefWidth="150.0" />
-                        <ComboBox layoutX="258.0" layoutY="165.0" prefWidth="150.0" />
-                        <Button layoutX="192.0" layoutY="302.0" mnemonicParsing="false" text="Add Tournament">
+                        <TextField fx:id="tname" layoutX="258.0" layoutY="67.0" />
+                        <ComboBox fx:id="tcourt" layoutX="258.0" layoutY="114.0" prefWidth="150.0" />
+                        <ComboBox fx:id="tcategory" layoutX="258.0" layoutY="165.0" prefWidth="150.0" />
+                        <Button fx:id="tadd" layoutX="192.0" layoutY="302.0" mnemonicParsing="false" onAction="#addt" text="Add Tournament">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -276,8 +276,8 @@
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Text>
-                        <ComboBox layoutX="258.0" layoutY="215.0" prefWidth="150.0" />
-                        <Button layoutX="165.0" layoutY="357.0" mnemonicParsing="false" text="Add Another Tournament">
+                        <ComboBox fx:id="tyear" layoutX="258.0" layoutY="215.0" prefWidth="150.0" />
+                        <Button fx:id="tadd1" layoutX="165.0" layoutY="357.0" mnemonicParsing="false" onAction="#addt1" text="Add Another Tournament">
                            <font>
                               <Font size="14.0" />
                            </font>
