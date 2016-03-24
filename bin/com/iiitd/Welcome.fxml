@@ -11,14 +11,14 @@
 
 <AnchorPane minHeight="600.0" minWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iiitd.WelcomeController">
    <children>
-      <SplitPane dividerPositions="0.617056856187291" orientation="VERTICAL" prefHeight="600.0" prefWidth="500.0">
+      <SplitPane dividerPositions="0.6153846153846154" orientation="VERTICAL" prefHeight="600.0" prefWidth="500.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="342.0" prefWidth="498.0">
                <children>
-                  <Button fx:id="hth" layoutX="69.0" layoutY="258.0" minWidth="126.0" mnemonicParsing="false" onAction="#headtohead" prefHeight="25.0" prefWidth="108.0" text="Head to Head" />
+                  <Button fx:id="hth" layoutX="69.0" layoutY="260.0" minWidth="126.0" mnemonicParsing="false" onAction="#headtohead" prefHeight="25.0" prefWidth="108.0" text="Head to Head" />
                   <Button fx:id="mstats" layoutX="69.0" layoutY="300.0" minWidth="126.0" mnemonicParsing="false" onAction="#matchstats" text="Match Statistics" />
                   <Button fx:id="cinfo" layoutX="290.0" layoutY="222.0" minWidth="126.0" mnemonicParsing="false" onAction="#coachinfo" text="Coach Information" />
-                  <Button fx:id="sinfo" layoutX="290.0" layoutY="259.0" mnemonicParsing="false" onAction="#sponsorinfo" text="Sponsor Information" />
+                  <Button fx:id="sinfo" layoutX="290.0" layoutY="261.0" mnemonicParsing="false" onAction="#sponsorinfo" text="Sponsor Information" />
                   <Button fx:id="rinfo" layoutX="291.0" layoutY="299.0" minHeight="25.0" minWidth="126.0" mnemonicParsing="false" onAction="#refereeinfo" text="Referee Information" />
                   <Button fx:id="pinfo" layoutX="69.0" layoutY="221.0" minWidth="126.0" mnemonicParsing="false" onAction="#playerinfo" text="Player Information" />
                   <Label layoutX="203.0" layoutY="176.0" prefHeight="27.0" prefWidth="90.0" text="User Panel">
