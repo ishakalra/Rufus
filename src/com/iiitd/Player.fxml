@@ -1,10 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.iiitd.PlayerController">
-	<!-- TODO Add Nodes -->
+<AnchorPane minHeight="600.0" minWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iiitd.PlayerController">
+   <children>
+      <Text layoutX="21.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+      <ComboBox fx:id="name" layoutX="97.0" layoutY="60.0" prefWidth="150.0" />
+      <ComboBox fx:id="country" layoutX="97.0" layoutY="93.0" prefWidth="150.0" />
+      <Text layoutX="21.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country" />
+      <Text layoutX="250.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Won Tournament" textAlignment="CENTER" wrappingWidth="72.966796875" />
+      <Text layoutX="269.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Court" />
+      <TableView layoutX="7.0" layoutY="253.0" prefHeight="347.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="253.0">
+        <columns>
+          <TableColumn fx:id="cname" prefWidth="81.0" text="Name" />
+          <TableColumn fx:id="catp" prefWidth="70.0" text="ATP-Points" />
+            <TableColumn fx:id="ccountry" prefWidth="68.0" text="Country" />
+            <TableColumn fx:id="cdob" prefWidth="56.0" text="DOB" />
+            <TableColumn fx:id="cpro" prefWidth="72.0" text="Turned Pro" />
+            <TableColumn fx:id="cmatch" prefWidth="77.0" text="Match Won" />
+            <TableColumn fx:id="ctitle" prefWidth="75.0" text="Titles Won" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="wont" layoutX="325.0" layoutY="93.0" prefWidth="150.0" />
+      <ComboBox fx:id="court" layoutX="325.0" layoutY="60.0" prefWidth="150.0" />
+      <Text layoutX="19.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATP points" />
+      <TextField fx:id="atp1" layoutX="98.0" layoutY="126.0" />
+      <TextField fx:id="atp2" layoutX="323.0" layoutY="126.0" />
+      <Text layoutX="19.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Born" />
+      <Text layoutX="15.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matches Won" />
+      <TextField fx:id="match2" layoutX="324.0" layoutY="191.0" />
+      <TextField fx:id="match1" layoutX="98.0" layoutY="190.0" />
+      <Text layoutX="16.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Turned Pro" />
+      <ComboBox fx:id="pro1" layoutX="98.0" layoutY="221.0" prefWidth="150.0" />
+      <ComboBox fx:id="pro2" layoutX="324.0" layoutY="223.0" prefWidth="150.0" />
+      <DatePicker fx:id="born1" layoutX="98.0" layoutY="158.0" prefHeight="25.0" prefWidth="150.0" />
+      <DatePicker fx:id="born2" layoutX="324.0" layoutY="158.0" prefHeight="25.0" prefWidth="150.0" />
+      <Text layoutX="278.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
+      <Text layoutX="278.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
+      <Text layoutX="279.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
+      <Text layoutX="279.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
+      <Text layoutX="190.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Information">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Text>
+      <Button fx:id="filter" layoutX="398.0" layoutY="21.0" mnemonicParsing="false" onAction="#apply" text="Apply Filter" />
+      <Button fx:id="back" layoutX="37.0" layoutY="21.0" mnemonicParsing="false" onAction="#backb" text="Back" />
+   </children>
 </AnchorPane>
