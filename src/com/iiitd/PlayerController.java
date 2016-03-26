@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 public class PlayerController {
@@ -19,6 +20,12 @@ public class PlayerController {
 
     @FXML
     private TextField match1;
+    
+    @FXML
+    private ComboBox<?> title1;
+
+    @FXML
+    private ComboBox<?> title2;
 
     @FXML
     private TableColumn<?, ?> cpro;
@@ -49,6 +56,9 @@ public class PlayerController {
 
     @FXML
     private DatePicker born1;
+    
+    @FXML
+    private TableView<?> playertable;
 
     @FXML
     private TableColumn<?, ?> catp;
