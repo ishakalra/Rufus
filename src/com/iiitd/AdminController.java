@@ -1,12 +1,24 @@
 package com.iiitd;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
 
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import com.iiitd.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
 
 public class AdminController {
 
@@ -131,8 +143,12 @@ public class AdminController {
     private ComboBox<?> splayer;
 
     @FXML
-    void lout(ActionEvent event) {
-
+    void lout(ActionEvent event) throws IOException{
+    	Parent parent = FXMLLoader.load(getClass().getResource("/com/iiitd/Welcome.fxml"));
+		Scene scene=new Scene(parent);
+		Main.stage.setScene(scene);
+		Main.stage.setTitle("Hello There");
+		Main.stage.show();
     }
 
     @FXML
