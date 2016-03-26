@@ -1,10 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.iiitd.CoachController">
-	<!-- TODO Add Nodes -->
-</AnchorPane>
+<ScrollPane minHeight="600.0" minWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iiitd.CoachController">
+   <content>
+      <AnchorPane minHeight="597.0" minWidth="498.0" prefHeight="597.0" prefWidth="498.0">
+         <children>
+            <Text layoutX="170.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coach Information">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Text>
+            <Button fx:id="apply" layoutX="392.0" layoutY="15.0" mnemonicParsing="false" onAction="#filter" text="Apply Filter" />
+            <Button fx:id="back" layoutX="49.0" layoutY="15.0" mnemonicParsing="false" onAction="#backb" text="Back" />
+            <Text layoutX="28.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+            <Text layoutX="28.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country" />
+            <ComboBox fx:id="name" layoutX="79.0" layoutY="58.0" prefWidth="150.0" />
+            <ComboBox fx:id="country" layoutX="79.0" layoutY="95.0" prefWidth="150.0" />
+            <ComboBox fx:id="cooachee" layoutX="319.0" layoutY="58.0" prefWidth="150.0" />
+            <Text layoutX="263.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coachee" />
+            <Text layoutX="29.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coaching Contract" />
+            <DatePicker fx:id="contract1" layoutX="147.0" layoutY="129.0" prefHeight="25.0" prefWidth="126.0" />
+            <Text layoutX="293.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
+            <DatePicker fx:id="contract2" layoutX="325.0" layoutY="129.0" prefHeight="25.0" prefWidth="126.0" />
+            <DatePicker fx:id="dob2" layoutX="324.0" layoutY="162.0" prefHeight="25.0" prefWidth="126.0" />
+            <Text layoutX="292.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
+            <DatePicker fx:id="dob1" layoutX="146.0" layoutY="162.0" prefHeight="25.0" prefWidth="126.0" />
+            <Text layoutX="28.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Birth" />
+            <Text layoutX="262.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coachee Country" textAlignment="CENTER" wrappingWidth="46.826171875" />
+            <ComboBox fx:id="coachee_country" layoutX="319.0" layoutY="95.0" prefWidth="150.0" />
+            <ComboBox fx:id="pro2" layoutX="325.0" layoutY="197.0" prefHeight="25.0" prefWidth="127.0" />
+            <ComboBox fx:id="pro1" layoutX="147.0" layoutY="197.0" prefHeight="25.0" prefWidth="126.0" />
+            <Text layoutX="28.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coachee Turned Pro" />
+            <Text layoutX="292.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
+            <TableView fx:id="coachtable" layoutY="245.0" prefHeight="352.0" prefWidth="498.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="245.0">
+              <columns>
+                <TableColumn fx:id="cname" prefWidth="82.0" text="Name" />
+                <TableColumn fx:id="cdob" prefWidth="88.0" text="Date of Birth" />
+                  <TableColumn fx:id="ccountry" prefWidth="60.0" text="Country" />
+                  <TableColumn fx:id="cplayer" prefWidth="76.0" text="Coachee" />
+                  <TableColumn fx:id="csince" prefWidth="102.0" text="Coaching Since" />
+                  <TableColumn fx:id="ctill" prefWidth="89.0" text="Coaching Till" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>
