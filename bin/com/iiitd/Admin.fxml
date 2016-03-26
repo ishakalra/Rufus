@@ -22,7 +22,7 @@
       </Button>
       <TabPane layoutY="103.0" prefHeight="498.0" prefWidth="500.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="103.0">
         <tabs>
-          <Tab text="Player">
+          <Tab onSelectionChanged="#player" text="Player">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
