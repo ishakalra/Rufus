@@ -1,10 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.iiitd.RefereeController">
-	<!-- TODO Add Nodes -->
-</AnchorPane>
+<ScrollPane minHeight="600.0" minWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iiitd.RefereeController">
+   <content>
+      <AnchorPane minHeight="598.0" minWidth="498.0" prefHeight="598.0" prefWidth="498.0">
+         <children>
+            <Text layoutX="161.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Referee Information">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Text>
+            <Button fx:id="back" layoutX="51.0" layoutY="19.0" mnemonicParsing="false" onAction="#backb" text="Back" />
+            <Button fx:id="apply" layoutX="387.0" layoutY="19.0" mnemonicParsing="false" onAction="#filter" text="Apply Filter" />
+            <Text layoutX="23.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+            <ComboBox fx:id="name" layoutX="66.0" layoutY="64.0" prefWidth="150.0" />
+            <ComboBox fx:id="country" layoutX="326.0" layoutY="64.0" prefWidth="150.0" />
+            <Text layoutX="253.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country" />
+            <Text layoutX="23.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Birth" />
+            <DatePicker fx:id="dob1" layoutX="106.0" layoutY="131.0" prefHeight="25.0" prefWidth="152.0" />
+            <Text layoutX="274.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
+            <DatePicker fx:id="dob2" layoutX="302.0" layoutY="131.0" prefHeight="25.0" prefWidth="152.0" />
+            <Text layoutX="252.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament" />
+            <ComboBox fx:id="tournament" layoutX="326.0" layoutY="98.0" prefWidth="150.0" />
+            <ComboBox fx:id="court" layoutX="66.0" layoutY="98.0" prefWidth="150.0" />
+            <Text layoutX="23.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Court" />
+            <Text layoutX="274.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
+            <Text layoutX="23.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Year" />
+            <ComboBox fx:id="year1" layoutX="106.0" layoutY="165.0" prefHeight="25.0" prefWidth="152.0" />
+            <ComboBox fx:id="year2" layoutX="303.0" layoutY="165.0" prefHeight="25.0" prefWidth="151.0" />
+            <Text layoutX="23.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" />
+            <ComboBox fx:id="player1" layoutX="72.0" layoutY="198.0" prefWidth="150.0" />
+            <ComboBox fx:id="player2" layoutX="326.0" layoutY="198.0" prefWidth="150.0" />
+            <Text layoutX="274.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2" />
+            <TableView fx:id="refereetable" layoutX="6.0" layoutY="245.0" prefHeight="353.0" prefWidth="498.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="245.0">
+              <columns>
+                <TableColumn fx:id="cname" prefWidth="142.0" text="Name" />
+                <TableColumn fx:id="cdob" minWidth="0.0" prefWidth="100.0" text="Date Of Birth" />
+                  <TableColumn fx:id="ccountry" prefWidth="126.0" text="Country" />
+                  <TableColumn fx:id="cmatches" prefWidth="129.0" text="Matches Refereed" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
+   </content>
+</ScrollPane>

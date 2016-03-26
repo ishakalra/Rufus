@@ -1,10 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.iiitd.SponsorController">
-	<!-- TODO Add Nodes -->
-</AnchorPane>
+<ScrollPane minHeight="600.0" minWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iiitd.SponsorController">
+   <content>
+      <AnchorPane minHeight="597.0" minWidth="498.0" prefHeight="598.0" prefWidth="498.0">
+         <children>
+            <Text layoutX="162.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sponsor Information">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Text>
+            <Button fx:id="apply" layoutX="390.0" layoutY="13.0" mnemonicParsing="false" onAction="#filter" text="Apply Filter" />
+            <Button fx:id="back" layoutX="39.0" layoutY="13.0" mnemonicParsing="false" onAction="#backb" text="Back" />
+            <Text layoutX="29.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+            <Text layoutX="275.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player" />
+            <ComboBox fx:id="name" layoutX="83.0" layoutY="62.0" prefWidth="150.0" />
+            <ComboBox fx:id="player" layoutX="322.0" layoutY="62.0" prefWidth="150.0" />
+            <Text layoutX="29.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Year" />
+            <ComboBox fx:id="year1" layoutX="83.0" layoutY="140.0" prefWidth="150.0" />
+            <Text layoutX="272.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
+            <ComboBox fx:id="year2" layoutX="322.0" layoutY="140.0" prefWidth="150.0" />
+            <Text layoutX="28.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country" />
+            <ComboBox fx:id="country" layoutX="83.0" layoutY="100.0" prefWidth="150.0" />
+            <Text layoutX="24.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATP Points" textAlignment="CENTER" wrappingWidth="37.642578125" />
+            <ComboBox fx:id="atp2" layoutX="323.0" layoutY="178.0" prefWidth="150.0" />
+            <Text layoutX="273.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
+            <ComboBox fx:id="atp1" layoutX="83.0" layoutY="178.0" prefWidth="150.0" />
+            <Text layoutX="247.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament" />
+            <ComboBox fx:id="tournament" layoutX="323.0" layoutY="100.0" prefWidth="150.0" />
+            <ComboBox fx:id="title1" layoutX="83.0" layoutY="217.0" prefWidth="150.0" />
+            <Text layoutX="273.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
+            <ComboBox fx:id="title2" layoutX="323.0" layoutY="217.0" prefWidth="150.0" />
+            <Text layoutX="24.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titles Won" textAlignment="CENTER" wrappingWidth="37.642578125" />
+            <TableView fx:id="sponsortable" layoutY="258.0" prefHeight="340.0" prefWidth="498.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="258.0">
+              <columns>
+                <TableColumn fx:id="cname" prefWidth="106.0" text="Name" />
+                <TableColumn fx:id="cyear" prefWidth="44.0" text="Year" />
+                  <TableColumn fx:id="cplayer" prefWidth="91.0" text="Player" />
+                  <TableColumn fx:id="catp" prefWidth="74.0" text="ATP Points" />
+                  <TableColumn fx:id="ccountry" prefWidth="81.0" text="Country" />
+                  <TableColumn fx:id="ctitle" prefWidth="101.0" text="Titles Won" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>
