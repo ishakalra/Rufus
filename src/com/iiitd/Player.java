@@ -1,5 +1,11 @@
 package com.iiitd;
 
-public class Player {
+import java.util.Date;
 
+public class Player {
+	private String Name;
+    private String country;
+    private Date dob;
+    private double salary;
+    private int deptId;
 }

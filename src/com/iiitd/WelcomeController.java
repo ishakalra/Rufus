@@ -106,7 +106,7 @@ public class WelcomeController {
 
     @FXML
     void lin(ActionEvent event) throws IOException{
-    	if(username.getText().equals("Rogerthat")&&password.getText().equals("sneakattackbyroger")){
+    	if(username.getText().equals("Rogerthat")&&password.getText().equals("sabr")){
 			Parent parent = FXMLLoader.load(getClass().getResource("/com/iiitd/Admin.fxml"));
 			Scene scene=new Scene(parent);
 			Main.stage.setScene(scene);
