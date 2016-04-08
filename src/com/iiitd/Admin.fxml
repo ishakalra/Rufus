@@ -68,7 +68,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Match">
+            <Tab onSelectionChanged="#mtc" text="Match">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -121,7 +121,7 @@
                      </children></AnchorPane>
               </content>
             </Tab>
-          <Tab text="Coach">
+          <Tab onSelectionChanged="#coach" text="Coach">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -174,7 +174,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Referee">
+            <Tab onSelectionChanged="#referee" text="Referee">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
