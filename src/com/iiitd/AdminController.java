@@ -673,7 +673,7 @@ public class AdminController {
 			sName = sname.getText();
 			sponsplay = splayer.getValue();
 			contract = syear.getValue();
-			String sql = "INSERT INTO sponsor " + "VALUES (?, ?, ?, ?)";
+			String sql = "INSERT INTO sponsor " + "VALUES (?, ?, ?)";
 			PreparedStatement preparedStmt = conn.prepareStatement(sql);
 			preparedStmt.setString(1, sName);
 			preparedStmt.setString(2, sponsplay);
