@@ -27,8 +27,8 @@ CREATE TABLE `coach` (
   `Cdob` date DEFAULT NULL,
   `Ccountry` varchar(20) DEFAULT NULL,
   `coachee` varchar(30) DEFAULT NULL,
-  `CoachSince` int(11) DEFAULT NULL,
-  `CoachTill` int(11) DEFAULT NULL,
+  `CoachSince` date DEFAULT NULL,
+  `CoachTill` date DEFAULT NULL,
   PRIMARY KEY (`CName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -39,6 +39,7 @@ CREATE TABLE `coach` (
 
 LOCK TABLES `coach` WRITE;
 /*!40000 ALTER TABLE `coach` DISABLE KEYS */;
+INSERT INTO `coach` VALUES ('Boris Becker','1967-11-22','Germany','Novak Djokovic','2013-07-12','2017-04-16');
 /*!40000 ALTER TABLE `coach` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -140,6 +141,7 @@ CREATE TABLE `tournament` (
 
 LOCK TABLES `tournament` WRITE;
 /*!40000 ALTER TABLE `tournament` DISABLE KEYS */;
+INSERT INTO `tournament` VALUES ('Australian Open','Hard',2000,1990),('Basel Open','Hard',500,1999),('Canada Masters','Hard',1000,1995),('Cincinnati Open','Hard',1000,1994),('Dubai Open','Hard',500,1998),('French Open','Clay',2000,1991),('Halle Open','Grass',500,1996),('Hamburg Open','Clay',500,1997),('Indian Wells','Hard',1000,1995),('Madrid Open','Clay',1000,1994),('Monte Carlo','Clay',1000,1996),('Queens','Grass',500,1998),('Shanghai Masters','Hard',1000,1997),('US Open','Hard',2000,1992),('Wimbledon','Grass',2000,1990),('World Tour Finals','Hard',1000,1996);
 /*!40000 ALTER TABLE `tournament` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -152,4 +154,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-16  1:55:41
+-- Dump completed on 2016-04-16  2:30:30

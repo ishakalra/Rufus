@@ -502,6 +502,7 @@ public class AdminController {
 			LocalDate localDate = cdob.getValue();
 			LocalDate localDate1 = csince.getValue();
 			LocalDate localDate2 = ctill.getValue();
+			coachee = coachee + cplayer.getValue();
 			Date date = java.sql.Date.valueOf(localDate);
 			Date date1 = java.sql.Date.valueOf(localDate1);
 			Date date2 = java.sql.Date.valueOf(localDate2);
@@ -738,22 +739,33 @@ public class AdminController {
 	void addt(ActionEvent event) {
 		Connection conn = null;
 		Statement stmt = null;
+		
 		try {
 			String tName = "";
 			String tCourt = "";
 			String tCategory = "";
 			int tYear;
+			int tpoints = 0;
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
 			stmt = conn.createStatement();
 			tName = tName + tname.getText();
 			tCategory = tCategory + tcategory.getValue();
+			if(tCategory.equals("Grand Slam")){
+				tpoints = 2000;
+			}
+			else if(tCategory.equals("ATP 1000")){
+				tpoints = 1000;
+			}
+			else if(tCategory.equals("ATP 500")){
+				tpoints = 500;
+			}
 			tCourt = tCourt + tcourt.getValue();
 			tYear = tyear.getValue();
 			String sql = "INSERT INTO tournament " + "VALUES (?, ?, ?, ?)";
 			PreparedStatement preparedStmt = conn.prepareStatement(sql);
 			preparedStmt.setString(1, tName);
-			preparedStmt.setString(3, tCategory);
+			preparedStmt.setInt(3, tpoints);
 			preparedStmt.setString(2, tCourt);
 			preparedStmt.setInt(4, tYear);
 			preparedStmt.execute();
