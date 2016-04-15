@@ -126,7 +126,7 @@ public class AdminController {
 	private Button tadd1;
 
 	@FXML
-	private ComboBox<String> ppoints;
+	private TextField ppoints;
 
 	@FXML
 	private TextField sname;
@@ -169,6 +169,8 @@ public class AdminController {
 
 	@FXML
 	void player(Event event) {
+		pcountry.getItems().removeAll(pcountry.getItems());
+		ppro.getItems().removeAll(ppro.getItems());
 		pcountry.getItems().addAll("USA", "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua & Deps",
 				"Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh",
 				"Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia Herzegovina",
@@ -196,7 +198,6 @@ public class AdminController {
 				"Trinidad & Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine",
 				"United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City",
 				"Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe");
-		ppoints.getItems().addAll("1000", "2000", "3000", "4000");
 		ppro.getItems().addAll(2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000, 1999, 1998, 1997, 1996,
 				1995, 1994, 1993, 1992, 1991, 1990);
 	}
@@ -218,7 +219,7 @@ public class AdminController {
 			country = country + pcountry.getValue();
 			LocalDate localDate = pdob.getValue();
 			Date date = java.sql.Date.valueOf(localDate);
-			points = Integer.parseInt(ppoints.getValue());
+			points = Integer.parseInt(ppoints.getText());
 			year = ppro.getValue();
 			String sql = "INSERT INTO player " + "VALUES (?, ?, ?, ?, ?)";
 			PreparedStatement preparedStmt = conn.prepareStatement(sql);
@@ -256,12 +257,14 @@ public class AdminController {
 		pname.setText("");
 		pcountry.valueProperty().set("");
 		pdob.setValue(null);
-		ppoints.setValue("");
+		ppoints.setText("");
 		ppro.setValue(null);
 	}
 
 	@FXML
 	void mtc(Event event){
+		myear.getItems().removeAll(myear.getItems());
+		mround.getItems().removeAll(mround.getItems());
 		ResultSet rs = null;
 		Connection connection = null;
 		Statement statement = null;
@@ -420,6 +423,7 @@ public class AdminController {
 
 	@FXML
 	void coach(Event event) {
+		ccountry.getItems().removeAll(ccountry.getItems());
 		ResultSet rs = null;
 		Connection connection = null;
 		Statement statement = null;
@@ -541,6 +545,7 @@ public class AdminController {
 
 	@FXML
 	void referee(Event event) {
+		rcountry.getItems().removeAll(rcountry.getItems());
 		rcountry.getItems().addAll("USA", "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua & Deps",
 				"Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh",
 				"Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia Herzegovina",
@@ -622,6 +627,7 @@ public class AdminController {
 
 	@FXML
 	void sponsor(Event event) {
+		syear.getItems().removeAll(syear.getItems());
 		ResultSet rs = null;
 		Connection connection = null;
 		Statement statement = null;
@@ -712,6 +718,9 @@ public class AdminController {
 
 	@FXML
 	void tournament(Event event) {
+		tcourt.getItems().removeAll(tcourt.getItems());
+		tcategory.getItems().removeAll(tcategory.getItems());
+		tyear.getItems().removeAll(tyear.getItems());
 		tcourt.getItems().addAll("Hard", "Grass", "Clay");
 		tcategory.getItems().addAll("Grand Slam", "ATP 1000", "ATP 500");
 		tyear.getItems().addAll(2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000, 1999, 1998, 1997,

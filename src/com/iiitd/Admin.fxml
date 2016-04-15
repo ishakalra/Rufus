@@ -62,7 +62,7 @@
                         <TextField fx:id="pname" layoutX="271.0" layoutY="55.0" prefHeight="25.0" prefWidth="152.0" />
                         <DatePicker fx:id="pdob" layoutX="271.0" layoutY="132.0" prefHeight="25.0" prefWidth="151.0" />
                         <ComboBox fx:id="pcountry" layoutX="272.0" layoutY="93.0" prefWidth="150.0" />
-                        <ComboBox fx:id="ppoints" layoutX="272.0" layoutY="172.0" prefWidth="150.0" />
+                        <TextField fx:id="ppoints" layoutX="271.0" layoutY="170.0" prefHeight="31.0" prefWidth="153.0" />
                         <ComboBox fx:id="ppro" layoutX="272.0" layoutY="213.0" prefWidth="150.0" />
                      </children>
                   </AnchorPane>
