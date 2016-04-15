@@ -36,7 +36,7 @@ public class AdminController {
 
 	// Database credentials
 	static final String USER = "root";
-	static final String PASS = "Jagdishiya1";
+	static final String PASS = "puchku";
 
 	@FXML
 	private DatePicker csince;
