@@ -65,7 +65,7 @@ CREATE TABLE `player` (
 
 LOCK TABLES `player` WRITE;
 /*!40000 ALTER TABLE `player` DISABLE KEYS */;
-INSERT INTO `player` VALUES ('Rafael Nadal','Spain','2016-06-03',1000,2003),('Roger Federer','Switzerland','1981-08-08',4000,1998);
+INSERT INTO `player` VALUES ('Andy Murray','United Kingdom','1987-05-15',8370,2005),('David Ferrer','Spain','1982-04-02',3505,2000),('Jo-Wilfred Tsonga','France','1985-04-17',3130,2004),('Juan Martin Del Potro','Argentina','1988-09-23',552,2005),('Kei Nishikori','Japan','1989-12-29',4070,2007),('Marin Cilic','Croatia','1988-09-28',2725,2005),('Milos Raonic','Canada','1990-12-27',2650,2008),('Novak Djokovic','Serbia','1987-05-22',16540,2004),('Rafael Nadal','Spain','1986-06-03',4990,2003),('Richard Gasquet','France','1986-06-18',2795,2002),('Roger Federer','Switzerland','1981-08-08',7695,1998),('Stanlias Wawrinka','Switzerland','1985-03-08',6405,2002),('Thomas Berdych','Czech Republic','1985-09-17',3810,2002);
 /*!40000 ALTER TABLE `player` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,6 +90,7 @@ CREATE TABLE `referee` (
 
 LOCK TABLES `referee` WRITE;
 /*!40000 ALTER TABLE `referee` DISABLE KEYS */;
+INSERT INTO `referee` VALUES ('Ali Nili','1965-11-15','USA'),('Carlos Ramos','1971-03-27','Portugal'),('Jake Garner','1969-03-09','Uganda'),('John Blom','1962-08-18','Australia');
 /*!40000 ALTER TABLE `referee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,4 +152,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-16  0:03:47
+-- Dump completed on 2016-04-16  1:55:41

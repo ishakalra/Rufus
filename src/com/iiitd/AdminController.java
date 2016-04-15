@@ -202,16 +202,17 @@ public class AdminController {
 				1995, 1994, 1993, 1992, 1991, 1990);
 	}
 
-	String yes = "";
-	String country = "";
-	int points;
-	int year;
+	
 
 	@FXML
 	void addp(ActionEvent event) {
 		Connection conn = null;
 		Statement stmt = null;
 		try {
+			String yes = "";
+			String country = "";
+			int points;
+			int year;
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
 			stmt = conn.createStatement();
@@ -359,18 +360,19 @@ public class AdminController {
 		mround.getItems().addAll("Quaterfinals","Semifinals","Finals");
 	}
 	
-	String matchtour = "";
-	String player1 = "";
-	String player2 = "";
-	int matchyear;
-	String matchround = "";
-	String matchref = "";
+	
 	
 	@FXML
 	void addm(ActionEvent event) {
 		Connection conn = null;
 		Statement stmt = null;
 		try {
+			String matchtour = "";
+			String player1 = "";
+			String player2 = "";
+			int matchyear;
+			String matchround = "";
+			String matchref = "";
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
 			stmt = conn.createStatement();
@@ -483,14 +485,15 @@ public class AdminController {
 				"Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe");
 	}
 
-	String coachname = "";
-	String coachee = "";
-	String coachcountry = "";
+	
 	@FXML
 	void addc(ActionEvent event) {
 		Connection conn = null;
 		Statement stmt = null;
 		try {
+			String coachname = "";
+			String coachee = "";
+			String coachcountry = "";
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
 			stmt = conn.createStatement();
@@ -575,14 +578,15 @@ public class AdminController {
 				"Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe");
 	}
 
-	String refname = "";
-	String refcountry = "";
+	
 
 	@FXML
 	void addr(ActionEvent event) {
 		Connection conn = null;
 		Statement stmt = null;
 		try {
+			String refname = "";
+			String refcountry = "";
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
 			stmt = conn.createStatement();
@@ -664,15 +668,16 @@ public class AdminController {
 				1996, 1995, 1994, 1993, 1992, 1991, 1990);
 	}
 
-	String sName = "";
-	String sponsplay = "";
-	int contract;
+	
 
 	@FXML
 	void adds(ActionEvent event) {
 		Connection conn = null;
 		Statement stmt = null;
 		try {
+			String sName = "";
+			String sponsplay = "";
+			int contract;
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
 			stmt = conn.createStatement();
@@ -727,16 +732,17 @@ public class AdminController {
 				1996, 1995, 1994, 1993, 1992, 1991, 1990);
 	}
 
-	String tName = "";
-	String tCourt = "";
-	String tCategory = "";
-	int tYear;
+	
 
 	@FXML
 	void addt(ActionEvent event) {
 		Connection conn = null;
 		Statement stmt = null;
 		try {
+			String tName = "";
+			String tCourt = "";
+			String tCategory = "";
+			int tYear;
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
 			stmt = conn.createStatement();
