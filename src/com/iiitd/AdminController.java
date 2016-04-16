@@ -646,7 +646,7 @@ public class AdminController {
 			// while(rs.next().getString("Name")!=null){
 			while (rs.next()) {
 				String sponsplayer = "";
-				System.out.println(rs.getString("Name"));
+//				System.out.println(rs.getString("Name"));
 				sponsplayer = rs.getString("Name");
 				splayer.getItems().addAll(sponsplayer);
 
@@ -756,21 +756,21 @@ public class AdminController {
 			stmt = conn.createStatement();
 			tName = tName + tname.getText();
 			tCategory = tCategory + tcategory.getValue();
-			if(tCategory.equals("Grand Slam")){
-				tpoints = 2000;
-			}
-			else if(tCategory.equals("ATP 1000")){
-				tpoints = 1000;
-			}
-			else if(tCategory.equals("ATP 500")){
-				tpoints = 500;
-			}
+//			if(tCategory.equals("Grand Slam")){
+//				tpoints = 2000;
+//			}
+//			else if(tCategory.equals("ATP 1000")){
+//				tpoints = 1000;
+//			}
+//			else if(tCategory.equals("ATP 500")){
+//				tpoints = 500;
+//			}
 			tCourt = tCourt + tcourt.getValue();
 			tYear = tyear.getValue();
 			String sql = "INSERT INTO tournament " + "VALUES (?, ?, ?, ?)";
 			PreparedStatement preparedStmt = conn.prepareStatement(sql);
 			preparedStmt.setString(1, tName);
-			preparedStmt.setInt(3, tpoints);
+			preparedStmt.setString(3, tCategory);
 			preparedStmt.setString(2, tCourt);
 			preparedStmt.setInt(4, tYear);
 			preparedStmt.execute();
