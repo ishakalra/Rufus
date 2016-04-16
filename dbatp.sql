@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: atp
 -- ------------------------------------------------------
--- Server version	5.7.10-log
+-- Server version	5.7.11-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -39,6 +39,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` VALUES ('ATP 1000',1000,600,360,180,90),('ATP 250',250,150,90,45,20),('ATP 500',500,300,180,90,45),('Grand Slam',2000,1200,720,360,180);
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -56,7 +57,9 @@ CREATE TABLE `coach` (
   `coachee` varchar(30) DEFAULT NULL,
   `CoachSince` date DEFAULT NULL,
   `CoachTill` date DEFAULT NULL,
-  PRIMARY KEY (`CName`)
+  PRIMARY KEY (`CName`),
+  KEY `coachee` (`coachee`),
+  CONSTRAINT `coach_ibfk_1` FOREIGN KEY (`coachee`) REFERENCES `player` (`Name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -83,8 +86,15 @@ CREATE TABLE `matches` (
   `tPlayerWon` varchar(30) DEFAULT NULL,
   `tPlayerLost` varchar(30) DEFAULT NULL,
   `tRound` varchar(20) NOT NULL,
-  `Tref` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`Tourname`,`tyear`,`tRound`)
+  `Tref` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`Tourname`,`tyear`,`tRound`),
+  KEY `tPlayerWon` (`tPlayerWon`),
+  KEY `tPlayerLost` (`tPlayerLost`),
+  KEY `Tref` (`Tref`),
+  CONSTRAINT `matches_ibfk_1` FOREIGN KEY (`tPlayerWon`) REFERENCES `player` (`Name`),
+  CONSTRAINT `matches_ibfk_2` FOREIGN KEY (`tPlayerLost`) REFERENCES `player` (`Name`),
+  CONSTRAINT `matches_ibfk_3` FOREIGN KEY (`Tref`) REFERENCES `referee` (`RefereeName`),
+  CONSTRAINT `matches_ibfk_4` FOREIGN KEY (`Tourname`) REFERENCES `tournament` (`TournamentName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -160,7 +170,9 @@ CREATE TABLE `sponsor` (
   `SponsorName` varchar(20) NOT NULL,
   `PlayerSponsored` varchar(30) DEFAULT NULL,
   `ContractYear` int(11) DEFAULT NULL,
-  PRIMARY KEY (`SponsorName`)
+  PRIMARY KEY (`SponsorName`),
+  KEY `PlayerSponsored` (`PlayerSponsored`),
+  CONSTRAINT `sponsor_ibfk_1` FOREIGN KEY (`PlayerSponsored`) REFERENCES `player` (`Name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -186,7 +198,9 @@ CREATE TABLE `tournament` (
   `CourtType` varchar(20) DEFAULT NULL,
   `ATPCategory` varchar(20) DEFAULT NULL,
   `YearBegin` int(11) DEFAULT NULL,
-  PRIMARY KEY (`TournamentName`)
+  PRIMARY KEY (`TournamentName`),
+  KEY `ATPCategory` (`ATPCategory`),
+  CONSTRAINT `tournament_ibfk_1` FOREIGN KEY (`ATPCategory`) REFERENCES `category` (`TournamentType`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -196,7 +210,7 @@ CREATE TABLE `tournament` (
 
 LOCK TABLES `tournament` WRITE;
 /*!40000 ALTER TABLE `tournament` DISABLE KEYS */;
-INSERT INTO `tournament` VALUES ('Australian Open','Hard','2000',1990),('Basel Open','Hard','500',1999),('Canada Masters','Hard','1000',1995),('Cincinnati Open','Hard','1000',1994),('Dubai Open','Hard','500',1998),('French Open','Clay','2000',1991),('Halle Open','Grass','500',1996),('Hamburg Open','Clay','500',1997),('Indian Wells','Hard','1000',1995),('Madrid Open','Clay','1000',1994),('Monte Carlo','Clay','1000',1996),('Queens','Grass','500',1998),('Shanghai Masters','Hard','1000',1997),('US Open','Hard','2000',1992),('Wimbledon','Grass','2000',1990),('World Tour Finals','Hard','1000',1996);
+INSERT INTO `tournament` VALUES ('Australian Open','Hard','Grand Slam',1905),('Canada Masters','Hard','ATP 1000',1881),('Cincinnati Masters','Hard','ATP 1000',1899),('Dubai Open','Hard','ATP 500',1993),('French Open','Clay','Grand Slam',1891),('German Open Hamburg','Clay','ATP 500',1892),('Halle Open','Grass','ATP 500',1993),('Indian Wells Masters','Hard','ATP 1000',1974),('Madrid Open','Clay','ATP 1000',2002),('Monte Carlo Masters','Clay','ATP 1000',1897),('Queen\'s Club Championships','Grass','ATP 500',1890),('Shanghai Masters','Hard','ATP 1000',2009),('Swiss Indoors','Hard','ATP 500',1970),('US Open','Hard','Grand Slam',1881),('Wimbledon','Grass','Grand Slam',1877),('World Tour Finals','Hard','ATP 1000',1970);
 /*!40000 ALTER TABLE `tournament` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -209,4 +223,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-16 16:14:01
+-- Dump completed on 2016-04-16 17:42:51
