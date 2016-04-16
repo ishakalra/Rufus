@@ -83,11 +83,11 @@ DROP TABLE IF EXISTS `matches`;
 CREATE TABLE `matches` (
   `Tourname` varchar(20) NOT NULL,
   `tyear` int(11) NOT NULL,
-  `tPlayerWon` varchar(30) DEFAULT NULL,
+  `tPlayerWon` varchar(30) NOT NULL,
   `tPlayerLost` varchar(30) DEFAULT NULL,
   `tRound` varchar(20) NOT NULL,
   `Tref` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`Tourname`,`tyear`,`tRound`),
+  PRIMARY KEY (`Tourname`,`tyear`,`tRound`,`tPlayerWon`),
   KEY `tPlayerWon` (`tPlayerWon`),
   KEY `tPlayerLost` (`tPlayerLost`),
   KEY `Tref` (`Tref`),
@@ -104,6 +104,7 @@ CREATE TABLE `matches` (
 
 LOCK TABLES `matches` WRITE;
 /*!40000 ALTER TABLE `matches` DISABLE KEYS */;
+INSERT INTO `matches` VALUES ('Australian Open',2012,'Novak Djokovic','Rafael Nadal','Finals','John Blom'),('Australian Open',2012,'Kei Nishikori','Jo-Wilfred Tsonga','Pre-Quaterfinals','Carlos Ramos'),('Australian Open',2012,'Novak Djokovic','Andy Murray','Semifinals','Fabian Cherny'),('French Open',2012,'Rafael Nadal','Novak Djokovic','Finals','Steve Ullrich'),('French Open',2012,'Roger Federer','Juan Martin Del Potro','Quaterfinals','Jane Harvey'),('French Open',2012,'Novak Djokovic','Roger Federer','Semifinals','Sylvia Watts'),('US Open',2012,'Andy Murray','Novak Djokovic','Finals','John Blom'),('US Open',2012,'Novak Djokovic','Stanislas Wawrinka','Pre-Quaterfinals','Fabian Cherny'),('US Open',2012,'Thomas Berdych','Roger Federer','Quaterfinals','Carlos Bernardes'),('US Open',2012,'Andy Murray','Thomas Berdych','Semifinals','Ali Nili'),('Wimbledon',2012,'Roger Federer','Andy Murray','Finals','Felix Torralba'),('Wimbledon',2012,'Andy Murray','David Ferrer','Quaterfinals','John Blom'),('Wimbledon',2012,'Roger Federer','Novak Djokovic','Semifinals','Jake Garner');
 /*!40000 ALTER TABLE `matches` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -130,7 +131,7 @@ CREATE TABLE `player` (
 
 LOCK TABLES `player` WRITE;
 /*!40000 ALTER TABLE `player` DISABLE KEYS */;
-INSERT INTO `player` VALUES ('Andy Murray','United Kingdom','1987-05-15',8370,2005),('David Ferrer','Spain','1982-04-02',3505,2000),('Jo-Wilfred Tsonga','France','1985-04-17',3130,2004),('Juan Martin Del Potro','Argentina','1988-09-23',552,2005),('Kei Nishikori','Japan','1989-12-29',4070,2007),('Marin Cilic','Croatia','1988-09-28',2725,2005),('Milos Raonic','Canada','1990-12-27',2650,2008),('Novak Djokovic','Serbia','1987-05-22',16540,2004),('Rafael Nadal','Spain','1986-06-03',4990,2003),('Richard Gasquet','France','1986-06-18',2795,2002),('Roger Federer','Switzerland','1981-08-08',7695,1998),('Stanislas Wawrinka','Switzerland','1985-03-08',6405,2002),('Thomas Berdych','Czech Republic','1985-09-17',3810,2002);
+INSERT INTO `player` VALUES ('Andy Murray','United Kingdom','1987-05-15',8370,2005),('Andy Roddick','USA','1982-08-20',0,2000),('Bernard Tomic','Australia','1992-10-21',1625,2008),('David Ferrer','Spain','1982-04-02',3505,2000),('Feliciano Lopez','Spain','1981-09-20',1585,1997),('Gael Monfils','France','1986-09-01',2220,2004),('Grigor Dimitrov','Bulgaria','1991-05-16',1430,2008),('Ivo Karlovic','Croatia','1979-10-23',1270,1997),('Jo-Wilfred Tsonga','France','1985-04-17',3130,2004),('John Isner','USA','1985-04-26',2235,2007),('Juan Martin Del Potro','Argentina','1988-09-23',552,2005),('Kei Nishikori','Japan','1989-12-29',4070,2007),('Lleyton Hewitt','Australia','1981-02-24',0,1998),('Marat Safin','Russian Federation','1980-01-27',0,1997),('Marin Cilic','Croatia','1988-09-28',2725,2005),('Mikhail Youzhny','Russian Federation','1982-06-25',695,1999),('Milos Raonic','Canada','1990-12-27',2650,2008),('Nicolas Almagro','Spain','1985-08-21',749,2003),('Novak Djokovic','Serbia','1987-05-22',16540,2004),('Philip Kohlschreiber','Germany','1983-10-16',1330,2001),('Rafael Nadal','Spain','1986-06-03',4990,2003),('Richard Gasquet','France','1986-06-18',2795,2002),('Roger Federer','Switzerland','1981-08-08',7695,1998),('Stanislas Wawrinka','Switzerland','1985-03-08',6405,2002),('Thomas Berdych','Czech Republic','1985-09-17',3810,2002);
 /*!40000 ALTER TABLE `player` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,7 +156,7 @@ CREATE TABLE `referee` (
 
 LOCK TABLES `referee` WRITE;
 /*!40000 ALTER TABLE `referee` DISABLE KEYS */;
-INSERT INTO `referee` VALUES ('Ali Nili','1965-11-15','USA'),('Carlos Ramos','1971-03-27','Portugal'),('Jake Garner','1969-03-09','Uganda'),('John Blom','1962-08-18','Australia');
+INSERT INTO `referee` VALUES ('Ali Nili','1965-11-15','USA'),('Bruno Rebeuh','1964-03-05','France'),('Carlos Bernardes','1971-11-16','Brazil'),('Carlos Ramos','1971-03-27','Portugal'),('Fabian Cherny','1952-05-14','Argentina'),('Felix Torralba','1968-10-18','Spain'),('Jake Garner','1969-03-09','Uganda'),('Jane Harvey','1970-09-25','United Kingdom'),('John Blom','1962-08-18','Australia'),('Steve Ullrich','1959-08-03','USA'),('Sylvia Watts','1966-06-19','United Kingdom');
 /*!40000 ALTER TABLE `referee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,4 +224,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-16 17:42:51
+-- Dump completed on 2016-04-16 19:22:18
