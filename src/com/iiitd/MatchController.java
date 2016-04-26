@@ -1,7 +1,12 @@
 package com.iiitd;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -75,8 +80,12 @@ public class MatchController {
     }
 
     @FXML
-    void backb(ActionEvent event) {
-
+    void backb(ActionEvent event) throws IOException {
+    	Parent parent = FXMLLoader.load(getClass().getResource("/com/iiitd/Welcome.fxml"));
+		Scene scene = new Scene(parent);
+		Main.stage.setScene(scene);
+		Main.stage.setTitle("Welcome to Rufus!");
+		Main.stage.show();
     }
 
 }

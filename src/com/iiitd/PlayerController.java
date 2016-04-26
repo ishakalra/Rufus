@@ -1,8 +1,13 @@
 package com.iiitd;
 
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -16,16 +21,16 @@ public class PlayerController {
     private TextField match2;
 
     @FXML
-    private ComboBox<?> country;
+    private ComboBox<String> country;
 
     @FXML
     private TextField match1;
     
     @FXML
-    private ComboBox<?> title1;
+    private ComboBox<String> title1;
 
     @FXML
-    private ComboBox<?> title2;
+    private ComboBox<String> title2;
 
     @FXML
     private TableColumn<?, ?> cpro;
@@ -34,16 +39,16 @@ public class PlayerController {
     private TableColumn<?, ?> cname;
 
     @FXML
-    private ComboBox<?> wont;
+    private ComboBox<String> wont;
 
     @FXML
     private Button back;
 
     @FXML
-    private ComboBox<?> court;
+    private ComboBox<String> court;
 
     @FXML
-    private ComboBox<?> pro1;
+    private ComboBox<String> pro1;
 
     @FXML
     private DatePicker born2;
@@ -52,7 +57,7 @@ public class PlayerController {
     private Button filter;
 
     @FXML
-    private ComboBox<?> pro2;
+    private ComboBox<String> pro2;
 
     @FXML
     private DatePicker born1;
@@ -67,7 +72,7 @@ public class PlayerController {
     private TableColumn<?, ?> ctitle;
 
     @FXML
-    private ComboBox<?> name;
+    private ComboBox<String> name;
 
     @FXML
     private TableColumn<?, ?> ccountry;
@@ -86,12 +91,16 @@ public class PlayerController {
 
     @FXML
     void apply(ActionEvent event) {
-
+//    	if((name.getValue().toString().length()!=0)&&(name.getValue().toString().length()!=0)
     }
 
     @FXML
-    void backb(ActionEvent event) {
-
+    void backb(ActionEvent event) throws IOException {
+    	Parent parent = FXMLLoader.load(getClass().getResource("/com/iiitd/Welcome.fxml"));
+		Scene scene = new Scene(parent);
+		Main.stage.setScene(scene);
+		Main.stage.setTitle("Welcome to Rufus!");
+		Main.stage.show();
     }
 
 }
