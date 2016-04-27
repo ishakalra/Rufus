@@ -264,8 +264,6 @@ public class AdminController {
 
 	@FXML
 	void mtc(Event event){
-		myear.getItems().removeAll(myear.getItems());
-		mround.getItems().removeAll(mround.getItems());
 		ResultSet rs = null;
 		Connection connection = null;
 		Statement statement = null;

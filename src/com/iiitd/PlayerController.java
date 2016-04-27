@@ -2,6 +2,16 @@ package com.iiitd;
 
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +26,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 public class PlayerController {
+	
+	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+	static final String DB_URL = "jdbc:mysql://localhost/atp";
+
+	// Database credentials
+	static final String USER = "root";
+	static final String PASS = "puchku";
 
     @FXML
     private TextField match2;
@@ -27,10 +44,10 @@ public class PlayerController {
     private TextField match1;
     
     @FXML
-    private ComboBox<String> title1;
+    private TextField title1;
 
     @FXML
-    private ComboBox<String> title2;
+    private TextField title2;
 
     @FXML
     private TableColumn<?, ?> cpro;
@@ -48,7 +65,7 @@ public class PlayerController {
     private ComboBox<String> court;
 
     @FXML
-    private ComboBox<String> pro1;
+    private ComboBox<Integer> pro1;
 
     @FXML
     private DatePicker born2;
@@ -57,7 +74,7 @@ public class PlayerController {
     private Button filter;
 
     @FXML
-    private ComboBox<String> pro2;
+    private ComboBox<Integer> pro2;
 
     @FXML
     private DatePicker born1;
@@ -88,10 +105,243 @@ public class PlayerController {
 
     @FXML
     private TableColumn<?, ?> cmatch;
+    
+    @FXML
+    void entry(ActionEvent event){
+    	name.getItems().removeAll(name.getItems());
+		court.getItems().removeAll(court.getItems());
+		country.getItems().removeAll(country.getItems());
+		wont.getItems().removeAll(wont.getItems());
+		pro1.getItems().removeAll(pro1.getItems());
+		pro2.getItems().removeAll(pro2.getItems());
+		ResultSet rs = null;
+		Connection connection = null;
+		Statement statement = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager.getConnection(DB_URL, USER, PASS);
+			statement = connection.createStatement();
+			String query = "SELECT Name FROM player";
+			rs = statement.executeQuery(query);
+			name.getItems().removeAll(name.getItems());
+			while (rs.next()) {
+				String Player = "";
+				Player = rs.getString("Name");
+				name.getItems().addAll(Player);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager.getConnection(DB_URL, USER, PASS);
+			statement = connection.createStatement();
+			String query = "SELECT Country FROM player";
+			rs = statement.executeQuery(query);
+			country.getItems().removeAll(country.getItems());
+			while (rs.next()) {
+				String Coun = "";
+				Coun = rs.getString("Country");
+				country.getItems().addAll(Coun);
 
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager.getConnection(DB_URL, USER, PASS);
+			statement = connection.createStatement();
+			String query1 = "SELECT TournamentName FROM tournament";
+			rs = statement.executeQuery(query1);
+			wont.getItems().removeAll(wont.getItems());
+			while (rs.next()) {
+				String tour = "";
+				tour = rs.getString("TournamentName");
+				wont.getItems().addAll(tour);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		
+		
+		pro1.getItems().addAll(2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000, 1999, 1998, 1997,
+				1996, 1995, 1994, 1993, 1992, 1991, 1990);
+		pro2.getItems().addAll(2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000, 1999, 1998, 1997,
+				1996, 1995, 1994, 1993, 1992, 1991, 1990);
+		court.getItems().addAll("Hard", "Clay","Grass");
+    }
+    String pname;
+    String pcourt;
+    String pcountry;
+    String ptour;
+    int pts1;
+    int pts2;
+    LocalDate localDate;
+	LocalDate localDate1;
+	int matchwonbeg;
+	int matchwonend;
+	int year1;
+	int year2;
+	int numwonbeg;
+	int numwonend;
+	
     @FXML
     void apply(ActionEvent event) {
+    	
+    	System.out.println("wkdvjefiohvnwemkcroubgjwelnackvorebgjdcn");
 //    	if((name.getValue().toString().length()!=0)&&(name.getValue().toString().length()!=0)
+    	if(name.getValue()!=null){
+    		pname=name.getValue();
+    	}
+    	else
+    		pname="%";
+    	if(court.getValue()!=null){
+    		pcourt=court.getValue();
+    	}
+    	else
+    		pcourt="%";
+    	if(country.getValue()!=null)
+    		pcountry=country.getValue();
+    	else
+    		pcountry="%";
+    	if(wont.getValue()!=null)
+    		ptour=wont.getValue();
+    	else
+    		ptour="%";
+    	System.out.println("ayush is a ioewhfiuewfb");
+    	if(atp1.getText().equals(""))
+    		pts1=0;
+    	else
+    		pts1=Integer.parseInt(atp1.getText());
+    	if(atp2.getText().equals(""))
+    		pts2=20000;
+    	else
+    		pts2=Integer.parseInt(atp2.getText());
+    	System.out.println("ayush is a ioewhfiuewfb");
+    	if(born1.getValue()!=null)
+    		localDate=born1.getValue();
+    	else
+    	{
+    		localDate=LocalDate.now().minus(10950, ChronoUnit.DAYS);
+    	}
+    	if(born2.getValue()!=null)
+    		localDate1=born2.getValue();
+    	else
+    	{
+    		localDate1=LocalDate.now();
+    	}
+    	if(match1.getText().equals(""))
+    		matchwonbeg=0;
+    	else
+    		matchwonbeg=Integer.parseInt(match1.getText());
+    	if(match2.getText().equals(""))
+    		matchwonend=2000;
+    	else
+    		matchwonend=Integer.parseInt(match2.getText());
+    	if(pro1.getValue()!=null)
+    		year1=pro1.getValue();
+    	else
+    		year1=1980;
+    	if(pro2.getValue()!=null)
+    		year2=pro2.getValue();
+    	else
+    		year2=2020;
+    	if(title1.getText().equals(""))
+    		numwonbeg=0;
+    	else
+    		numwonbeg=Integer.parseInt(title1.getText());
+    	if(title2.getText().equals(""))
+    		numwonend=50;
+    	else
+    		numwonend=Integer.parseInt(title2.getText());
+    	System.out.println("yyyyyyyyyyyyyyyyyyyyyyyyhfcnfedfhi;fr");
+    	
+    	Date date = java.sql.Date.valueOf(localDate);
+    	Date date1 = java.sql.Date.valueOf(localDate1); 
+    	
+    	System.out.println("ekdefhujidkeikfesnihlef");
+    	ResultSet rs = null;
+		Connection connection = null;
+		Statement statement = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager.getConnection(DB_URL, USER, PASS);
+			statement = connection.createStatement();
+			String query = "SELECT Name,CourtType,Country,TournamentName,ATPPoints,DOB,YearPro FROM player,tournament,matches where Name like '%" + pname + "%' and " +  "CourtType like '%" 
+			+ pcourt + "%' and " +  "Country like '%" + pcountry + "%' and " + "TournamentName like '%" + ptour + "%' and " + "ATPPoints between " + pts1 +
+					" and " + pts2 + "and DOB between " + localDate + " and " + localDate1 + " and YearPro between " + year1 + " and " + year2 + " group by tPlayerWon having count(*) between " + matchwonbeg +
+					" and " + matchwonend;
+			rs = statement.executeQuery(query);
+			while (rs.next()) {
+				String yo = "";
+				String mo = "";
+				String to = "";
+				String lo = "";
+				int so;
+				LocalDate la;
+				int ti;
+				yo = rs.getString("Name");
+				mo = rs.getString("CourtType");
+				to = rs.getString("Country");
+				lo = rs.getString("TournamentName");
+				so = rs.getInt("ATPPoints");
+				la = rs.getDate("DOB").toInstant().atZone(ZoneId.systemDefault()).toLocalDate();;
+				ti = rs.getInt("YearPro");
+				System.out.println(yo + " " + mo + " " + to + " " + lo + " " + so + " " + la + " " + ti);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("wkehferiofh");
+			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("ndcfwejl");
+			e.printStackTrace();
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
     }
 
     @FXML
