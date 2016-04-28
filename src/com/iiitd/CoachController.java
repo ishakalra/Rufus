@@ -8,8 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Date;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +23,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class CoachController {
 	
@@ -37,16 +41,16 @@ public class CoachController {
     private TableView<?> coachtable;
 
     @FXML
-    private TableColumn<?, ?> csince;
+    private TableColumn<Coach, LocalDate> csince;
 
     @FXML
-    private TableColumn<?, ?> cplayer;
+    private TableColumn<Coach, String> cplayer;
 
     @FXML
     private Button apply;
 
     @FXML
-    private TableColumn<?, ?> cname;
+    private TableColumn<Coach, String> cname;
 
     @FXML
     private Button back;
@@ -61,7 +65,7 @@ public class CoachController {
     private ComboBox<Integer> pro2;
 
     @FXML
-    private TableColumn<?, ?> ctill;
+    private TableColumn<Coach, LocalDate> ctill;
 
     @FXML
     private DatePicker contract1;
@@ -82,14 +86,23 @@ public class CoachController {
     private ComboBox<String> name;
 
     @FXML
-    private TableColumn<?, ?> ccountry;
+    private TableColumn<Coach, String> ccountry;
 
     @FXML
-    private TableColumn<?, ?> cdob;
+    private TableColumn<Coach, LocalDate> cdob;
     
     @FXML
     private Button entryb;
     
+    static ArrayList<Coach> listed = new ArrayList<Coach>();
+    static ObservableList data;
+    
+    private ObservableList getData(){
+    	
+    	ObservableList data = FXCollections.observableList(listed);
+		return data;
+    	
+    }
     @FXML
     void entry(ActionEvent event) {
     	name.getItems().removeAll(name.getItems());
@@ -305,7 +318,7 @@ public class CoachController {
 
 			rs = statement.executeQuery(query);
 			System.out.println("opwqajfeiorhgke'whgriuo52hrpoew'ifhguo3rhg'j");
-
+			listed = new ArrayList<Coach>();
 			while (rs.next()) {
 				String yo = "";
 				String mo = "";
@@ -314,6 +327,8 @@ public class CoachController {
 				int so;
 				Date la, ka, pa;
 				int ti;
+				String birth, since, till;
+				LocalDate lbirth, lsince, ltill;
 				System.out.println("Yolo");
 				yo = rs.getString("Cname");
 				mo = rs.getString("coachee");
@@ -321,9 +336,17 @@ public class CoachController {
 				la = rs.getDate("Cdob");
 				ka = rs.getDate("CoachSince");
 				pa = rs.getDate("CoachTill");
+				birth = la.toString();
+				since = ka.toString();
+				till = pa.toString();
+				lbirth = LocalDate.parse(birth);
+				ltill = LocalDate.parse(till);
+				lsince = LocalDate.parse(since);
 				
 				System.out.println("hola");
 				System.out.println(yo + " " + mo + " " + to + " " + la + " " + ka + " " + pa);
+				listed.add(new Coach(yo,lbirth,to,mo, lsince,ltill));
+				
 			}
 			
 		} catch (SQLException e) {
@@ -342,6 +365,27 @@ public class CoachController {
 			}
 		}
     	
+		data = FXCollections.observableList(listed);
+		cname.setCellValueFactory(
+				new PropertyValueFactory<Coach,String>("name")
+		);
+		ccountry.setCellValueFactory(
+				new PropertyValueFactory<Coach,String>("country")
+		);
+		cdob.setCellValueFactory(
+				new PropertyValueFactory<Coach,LocalDate>("dob")
+		);
+		cplayer.setCellValueFactory(
+				new PropertyValueFactory<Coach,String>("coachee")
+		);
+		csince.setCellValueFactory(
+				new PropertyValueFactory<Coach,LocalDate>("coachingsince")
+		);
+		ctill.setCellValueFactory(
+				new PropertyValueFactory<Coach,LocalDate>("coachingtill")
+		);
+		//data = getData();
+		coachtable.setItems(data);
     }
 
     @FXML

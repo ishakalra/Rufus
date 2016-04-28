@@ -6,8 +6,12 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class MatchController {
 	
@@ -28,10 +33,10 @@ public class MatchController {
 	static final String PASS = "puchku";
 
     @FXML
-    private TableColumn<?, ?> cround;
+    private TableColumn<Match, String> cround;
 
     @FXML
-    private TableColumn<?, ?> clost;
+    private TableColumn<Match, String> clost;
 
     @FXML
     private Button apply;
@@ -52,7 +57,7 @@ public class MatchController {
     private ComboBox<String> tournament;
 
     @FXML
-    private TableColumn<?, ?> cyear;
+    private TableColumn<Match, Integer> cyear;
 
     @FXML
     private ComboBox<String> referee;
@@ -64,22 +69,32 @@ public class MatchController {
     private ComboBox<String> round;
 
     @FXML
-    private TableColumn<?, ?> catp;
+    private TableColumn<Match, String> catp;
 
     @FXML
     private ComboBox<String> name2;
 
     @FXML
-    private TableColumn<?, ?> creferee;
+    private TableColumn<Match, String> creferee;
 
     @FXML
     private ComboBox<String> name1;
 
     @FXML
-    private TableColumn<?, ?> cwon;
+    private TableColumn<Match, String> cwon;
 
     @FXML
-    private TableColumn<?, ?> ctournament;
+    private TableColumn<Match, String> ctournament;
+    
+    static ArrayList<Match> listed = new ArrayList<Match>();
+    static ObservableList data;
+    
+    private ObservableList getData(){
+    	
+    	ObservableList data = FXCollections.observableList(listed);
+		return data;
+    	
+    }
     
     @FXML
     void entry(ActionEvent event){
@@ -291,6 +306,8 @@ public class MatchController {
 			+ mcourt + "%' and " +  "tRound like '%" + mround + "%' and " + "tyear >= " + ayush1 + " and tyear <= " + ayush2 + " and " + "Tref like '%" + mreferee + "%' and " + "tPlayerWon like '%" + mwon + "%' and " 
 			+ "tPlayerLost like '%" + mlost + "%' and " + "YearBegin >= " + mansi1 + " and YearBegin <= " + mansi2;
 			rs = statement.executeQuery(query);
+			
+			listed = new ArrayList<Match>();
 			while (rs.next()) {
 				String yo = "";
 				String mo = "";
@@ -306,7 +323,9 @@ public class MatchController {
 				bo = rs.getString("tPlayerWon");
 				co = rs.getString("tPlayerLost");
 				so = rs.getInt("tyear");
+				
 				System.out.println(yo + " " + mo + " " + to + " " + lo + " " + bo + " " + co + " " + so);
+				listed.add(new Match(yo,so,mo,bo,co,to,lo));
 			}
 			
 		} catch (SQLException e) {
@@ -324,6 +343,32 @@ public class MatchController {
 				}
 			}
 		}
+		
+		data = FXCollections.observableList(listed);
+		ctournament.setCellValueFactory(
+				new PropertyValueFactory<Match,String>("tournament")
+		);
+		cyear.setCellValueFactory(
+				new PropertyValueFactory<Match,Integer>("year")
+		);
+		cround.setCellValueFactory(
+				new PropertyValueFactory<Match,String>("round")
+		);
+		cwon.setCellValueFactory(
+				new PropertyValueFactory<Match,String>("pwon")
+		);
+		clost.setCellValueFactory(
+				new PropertyValueFactory<Match,String>("plost")
+		);
+		creferee.setCellValueFactory(
+				new PropertyValueFactory<Match,String>("referee")
+		);
+		catp.setCellValueFactory(
+				new PropertyValueFactory<Match,String>("atp")
+		);
+		
+		//data = getData();
+		matchtable.setItems(data);
     }
 
     @FXML

@@ -10,9 +10,9 @@ public class Match {
 	SimpleStringProperty pwon;
 	SimpleStringProperty plost;
 	SimpleStringProperty referee;
-	SimpleIntegerProperty atp;
+	SimpleStringProperty atp;
 	
-	public Match(String tournament, Integer year, String round, String pwon, String plost, String referee, Integer atp)
+	public Match(String tournament, Integer year, String round, String pwon, String plost, String referee, String atp)
 	{
 		this.tournament = new SimpleStringProperty(tournament);
 		this.year = new SimpleIntegerProperty(year);
@@ -20,7 +20,7 @@ public class Match {
 		this.pwon = new SimpleStringProperty(pwon);
 		this.plost = new SimpleStringProperty(plost);
 		this.referee = new SimpleStringProperty(referee);
-		this.atp = new SimpleIntegerProperty(atp);
+		this.atp = new SimpleStringProperty(atp);
 	}
 
 	public String getTournament() {
@@ -47,7 +47,7 @@ public class Match {
 		return referee.get();
 	}
 
-	public Integer getAtp() {
+	public String getAtp() {
 		return atp.get();
 	}
 
@@ -75,7 +75,7 @@ public class Match {
 		this.referee.set(referee);;
 	}
 
-	public void setAtp(Integer atp) {
+	public void setAtp(String atp) {
 		this.atp.set(atp);;
 	}
 	
