@@ -11,10 +11,14 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Date;
+
 
 import com.mysql.jdbc.PreparedStatement;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +30,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class PlayerController {
 	
@@ -52,10 +57,10 @@ public class PlayerController {
     private TextField title2;
 
     @FXML
-    private TableColumn<?, ?> cpro;
+    private TableColumn<Player, Integer> cpro;
 
     @FXML
-    private TableColumn<?, ?> cname;
+    private TableColumn<Player, String> cname;
 
     @FXML
     private ComboBox<String> wont;
@@ -85,16 +90,13 @@ public class PlayerController {
     private TableView<?> playertable;
 
     @FXML
-    private TableColumn<?, ?> catp;
-
-    @FXML
-    private TableColumn<?, ?> ctitle;
+    private TableColumn<Player, Integer> catp;
 
     @FXML
     private ComboBox<String> name;
 
     @FXML
-    private TableColumn<?, ?> ccountry;
+    private TableColumn<Player, String> ccountry;
 
     @FXML
     private TextField atp2;
@@ -103,10 +105,17 @@ public class PlayerController {
     private TextField atp1;
 
     @FXML
-    private TableColumn<?, ?> cdob;
-
-    @FXML
-    private TableColumn<?, ?> cmatch;
+    private TableColumn<Player, LocalDate> cdob;
+    
+    static ArrayList<Player> listed = new ArrayList<Player>();
+    static ObservableList data;
+    
+    private ObservableList getData(){
+    	
+    	ObservableList data = FXCollections.observableList(listed);
+		return data;
+    	
+    }
     
     @FXML
     void entry(ActionEvent event){
@@ -322,6 +331,7 @@ public class PlayerController {
 //			ps.setDate(2, (java.sql.Date) date1);
 			rs = statement.executeQuery(query);
 			System.out.println("opwqajfeiorhgke'whgriuo52hrpoew'ifhguo3rhg'j");
+			listed = new ArrayList<Player>();
 
 			while (rs.next()) {
 				String yo = "";
@@ -330,7 +340,9 @@ public class PlayerController {
 				String lo = "";
 				int so;
 				Date la;
-				int ti;
+				String dq;
+				int ti,a;
+				
 				System.out.println("Yolo");
 				yo = rs.getString("Name");
 //				mo = rs.getString("CourtType");
@@ -338,10 +350,14 @@ public class PlayerController {
 //				lo = rs.getString("TournamentName");
 				so = rs.getInt("ATPPoints");
 				la = rs.getDate("DOB");
+				dq = la.toString();
+				
+				LocalDate l1 = LocalDate.parse(dq);
 				ti = rs.getInt("YearPro");
 				System.out.println("Yolo");
 				System.out.println(la);
 				System.out.println(yo + " " + to + " " + so + " " + la + " " + ti);
+				listed.add(new Player(yo,to,l1,so,ti));
 			}
 			
 			
@@ -360,6 +376,25 @@ public class PlayerController {
 				}
 			}
 		}
+		
+		data = FXCollections.observableList(listed);
+		cname.setCellValueFactory(
+				new PropertyValueFactory<Player,String>("name")
+		);
+		catp.setCellValueFactory(
+				new PropertyValueFactory<Player,Integer>("points")
+		);
+		ccountry.setCellValueFactory(
+				new PropertyValueFactory<Player,String>("country")
+		);
+		cdob.setCellValueFactory(
+				new PropertyValueFactory<Player,LocalDate>("dob")
+		);
+		cpro.setCellValueFactory(
+				new PropertyValueFactory<Player,Integer>("year")
+		);
+		//data = getData();
+		playertable.setItems(data);
     }
 
     @FXML

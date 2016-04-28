@@ -20,10 +20,9 @@
               <columns>
                 <TableColumn fx:id="cname" prefWidth="123.0" text="Name" />
                 <TableColumn fx:id="catp" prefWidth="85.0" text="ATP-Points" />
-                  <TableColumn fx:id="ccountry" prefWidth="71.0" text="Country" />
-                  <TableColumn fx:id="cdob" prefWidth="77.0" text="DOB" />
-                  <TableColumn fx:id="cpro" prefWidth="71.0" text="Turned Pro" />
-                  <TableColumn fx:id="cmatch" prefWidth="72.0" text="Match Won" />
+                  <TableColumn fx:id="ccountry" prefWidth="99.0" text="Country" />
+                  <TableColumn fx:id="cdob" prefWidth="88.0" text="DOB" />
+                  <TableColumn fx:id="cpro" prefWidth="104.0" text="Turned Pro" />
               </columns>
             </TableView>
             <ComboBox fx:id="wont" layoutX="325.0" layoutY="93.0" prefWidth="150.0" />

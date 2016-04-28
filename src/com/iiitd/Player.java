@@ -14,19 +14,15 @@ public class Player {
 	SimpleObjectProperty<LocalDate> dob;
 	SimpleIntegerProperty points;
 	SimpleIntegerProperty year;
-	SimpleIntegerProperty matches;
-	SimpleIntegerProperty titles;
 	
-	public Player(String name, String country, LocalDate dob, int points, int year, int matches, int titles)
+	
+	public Player(String name, String country, LocalDate dob, int points, int year)
 	{
 		this.name = new SimpleStringProperty(name);
 		this.country = new SimpleStringProperty(country);
 		this.dob = new SimpleObjectProperty<LocalDate>(dob);
 		this.points = new SimpleIntegerProperty(points);
 		this.year = new SimpleIntegerProperty(year);
-		this.matches = new SimpleIntegerProperty(matches);
-		this.titles = new SimpleIntegerProperty(titles);
-		
 	}
 
 	public String getName() {
@@ -69,19 +65,4 @@ public class Player {
 		this.year.set(year);;
 	}
 
-	public Integer getMatches() {
-		return matches.get();
-	}
-
-	public void setMatches(Integer matches) {
-		this.matches.set(matches);;
-	}
-
-	public Integer getTitles() {
-		return titles.get();
-	}
-
-	public void setTitles(Integer titles) {
-		this.titles.set(titles);;
-	}
 }
