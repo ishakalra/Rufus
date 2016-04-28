@@ -18,13 +18,12 @@
             <Text layoutX="269.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Court" />
             <TableView fx:id="playertable" layoutX="7.0" layoutY="292.0" prefHeight="313.0" prefWidth="500.0" AnchorPane.bottomAnchor="-5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="292.0">
               <columns>
-                <TableColumn fx:id="cname" prefWidth="81.0" text="Name" />
-                <TableColumn fx:id="catp" prefWidth="70.0" text="ATP-Points" />
-                  <TableColumn fx:id="ccountry" prefWidth="68.0" text="Country" />
-                  <TableColumn fx:id="cdob" prefWidth="56.0" text="DOB" />
-                  <TableColumn fx:id="cpro" prefWidth="72.0" text="Turned Pro" />
-                  <TableColumn fx:id="cmatch" prefWidth="77.0" text="Match Won" />
-                  <TableColumn fx:id="ctitle" prefWidth="75.0" text="Titles Won" />
+                <TableColumn fx:id="cname" prefWidth="123.0" text="Name" />
+                <TableColumn fx:id="catp" prefWidth="85.0" text="ATP-Points" />
+                  <TableColumn fx:id="ccountry" prefWidth="71.0" text="Country" />
+                  <TableColumn fx:id="cdob" prefWidth="77.0" text="DOB" />
+                  <TableColumn fx:id="cpro" prefWidth="71.0" text="Turned Pro" />
+                  <TableColumn fx:id="cmatch" prefWidth="72.0" text="Match Won" />
               </columns>
             </TableView>
             <ComboBox fx:id="wont" layoutX="325.0" layoutY="93.0" prefWidth="150.0" />
@@ -52,10 +51,6 @@
             </Text>
             <Button fx:id="filter" layoutX="398.0" layoutY="21.0" mnemonicParsing="false" onAction="#apply" text="Apply Filter" />
             <Button fx:id="back" layoutX="37.0" layoutY="21.0" mnemonicParsing="false" onAction="#backb" text="Back" />
-            <Text layoutX="280.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
-            <Text layoutX="17.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titles Won" />
-            <TextField fx:id="title1" layoutX="93.0" layoutY="255.0" prefHeight="31.0" prefWidth="151.0" />
-            <TextField fx:id="title2" layoutX="324.0" layoutY="258.0" prefHeight="31.0" prefWidth="150.0" />
             <Button fx:id="push" layoutX="93.0" layoutY="21.0" mnemonicParsing="false" onAction="#entry" text="Entry" />
          </children>
       </AnchorPane>

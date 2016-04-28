@@ -285,14 +285,14 @@ public class PlayerController {
     		year2=pro2.getValue();
     	else
     		year2=2020;
-    	if(title1.getText().equals(""))
-    		numwonbeg=0;
-    	else
-    		numwonbeg=Integer.parseInt(title1.getText());
-    	if(title2.getText().equals(""))
-    		numwonend=50;
-    	else
-    		numwonend=Integer.parseInt(title2.getText());
+//    	if(title1.getText().equals(""))
+//    		numwonbeg=0;
+//    	else
+//    		numwonbeg=Integer.parseInt(title1.getText());
+//    	if(title2.getText().equals(""))
+//    		numwonend=50;
+//    	else
+//    		numwonend=Integer.parseInt(title2.getText());
     	System.out.println("yyyyyyyyyyyyyyyyyyyyyyyyhfcnfedfhi;fr");
     	
     	Date date1 = java.sql.Date.valueOf(localDate);
@@ -322,10 +322,7 @@ public class PlayerController {
 //			ps.setDate(2, (java.sql.Date) date1);
 			rs = statement.executeQuery(query);
 			System.out.println("opwqajfeiorhgke'whgriuo52hrpoew'ifhguo3rhg'j");
-//			if(!rs.next())
-//			{
-//				System.out.println("cool");
-//			}
+
 			while (rs.next()) {
 				String yo = "";
 				String mo = "";
@@ -347,26 +344,6 @@ public class PlayerController {
 				System.out.println(yo + " " + to + " " + so + " " + la + " " + ti);
 			}
 			
-//			while (rs.next()) {
-//				String yo = "";
-//				String mo = "";
-//				String to = "";
-//				String lo = "";
-//				int so;
-//				Date la;
-//				int ti;
-//				System.out.println("Yolo");
-//				yo = rs.getString("Name");
-////				mo = rs.getString("CourtType");
-//				to = rs.getString("Country");
-////				lo = rs.getString("TournamentName");
-//				so = rs.getInt("ATPPoints");
-//				la = rs.getDate("DOB");
-//				ti = rs.getInt("YearPro");
-//				System.out.println("Yolo");
-//				System.out.println(la);
-//				System.out.println(yo + " " + to + " " + so + " " + la + " " + ti);
-//			}
 			
 		} catch (SQLException e) {
 			System.out.println("wkehferiofh");

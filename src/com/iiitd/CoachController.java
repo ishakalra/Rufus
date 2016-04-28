@@ -302,17 +302,10 @@ public class CoachController {
 			String query = "SELECT CName,Ccountry,coachee,Cdob,CoachSince,CoachTill FROM coach,player where CName like '%" + came + "%' and coachee=Name and coachee like '%" + pname + "%' and " + "Country like '%" + pcountry + "%' and " + 
 				"Ccountry like '%" + coachcountry + "%' and "+ " Cdob >= date('"+bidate1+"') and DOB<=date('"+bidate2+"') and CoachSince >= date('"+cdate1+"') and CoachTill <= date('"+cdate2+"') and YearPro between " + year1 + " and " + year2;
 			
-//			String query1 = "SELECT Name FROM player Where DOB between ? and ?";
-//			String query1 = "SELECT * FROM player Where DOB>=date('"+date1+"') and DOB<=date('"+date2+"')";
-//			PreparedStatement ps = (PreparedStatement) connection.prepareStatement(query1);
-//			ps.setDate(1, (java.sql.Date) date1);
-//			ps.setDate(2, (java.sql.Date) date1);
+
 			rs = statement.executeQuery(query);
 			System.out.println("opwqajfeiorhgke'whgriuo52hrpoew'ifhguo3rhg'j");
-//			if(!rs.next())
-//			{
-//				System.out.println("cool");
-//			}
+
 			while (rs.next()) {
 				String yo = "";
 				String mo = "";
