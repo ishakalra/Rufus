@@ -13,6 +13,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
+import com.mysql.jdbc.PreparedStatement;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -259,7 +261,7 @@ public class PlayerController {
     		localDate=born1.getValue();
     	else
     	{
-    		localDate=LocalDate.now().minus(10950, ChronoUnit.DAYS);
+    		localDate=LocalDate.now().minus(109500, ChronoUnit.DAYS);
     	}
     	if(born2.getValue()!=null)
     		localDate1=born2.getValue();
@@ -293,10 +295,14 @@ public class PlayerController {
     		numwonend=Integer.parseInt(title2.getText());
     	System.out.println("yyyyyyyyyyyyyyyyyyyyyyyyhfcnfedfhi;fr");
     	
-    	Date date = java.sql.Date.valueOf(localDate);
-    	Date date1 = java.sql.Date.valueOf(localDate1); 
+    	Date date1 = java.sql.Date.valueOf(localDate);
+    	Date date2 = java.sql.Date.valueOf(localDate1); 
     	
-    	System.out.println("ekdefhujidkeikfesnihlef");
+    	
+    	System.out.println(date1+ " "+date2);
+    	String d1 = localDate.toString();
+//    	System.out.println(d1);
+    	String d2 = localDate1.toString();
     	ResultSet rs = null;
 		Connection connection = null;
 		Statement statement = null;
@@ -304,28 +310,63 @@ public class PlayerController {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection(DB_URL, USER, PASS);
 			statement = connection.createStatement();
-			String query = "SELECT Name,CourtType,Country,TournamentName,ATPPoints,DOB,YearPro FROM player,tournament,matches where Name like '%" + pname + "%' and " +  "CourtType like '%" 
+			String query = "SELECT Name,Country,ATPPoints,DOB,YearPro FROM player,tournament,matches where Tourname=TournamentName and Name like '%" + pname + "%' and " +  "CourtType like '%" 
 			+ pcourt + "%' and " +  "Country like '%" + pcountry + "%' and " + "TournamentName like '%" + ptour + "%' and " + "ATPPoints between " + pts1 +
-					" and " + pts2 + "and DOB between " + localDate + " and " + localDate1 + " and YearPro between " + year1 + " and " + year2 + " group by tPlayerWon having count(*) between " + matchwonbeg +
-					" and " + matchwonend;
+					" and " + pts2 + " and DOB >= date('"+date1+"') and DOB<=date('"+date2+"') and YearPro between " + year1 + " and " + year2 + " and Name=tPlayerWon  group by Name having count(*) >= " + matchwonbeg +
+					" and count(*) <= " + matchwonend;
+			
+//			String query1 = "SELECT Name FROM player Where DOB between ? and ?";
+//			String query1 = "SELECT * FROM player Where DOB>=date('"+date1+"') and DOB<=date('"+date2+"')";
+//			PreparedStatement ps = (PreparedStatement) connection.prepareStatement(query1);
+//			ps.setDate(1, (java.sql.Date) date1);
+//			ps.setDate(2, (java.sql.Date) date1);
 			rs = statement.executeQuery(query);
+			System.out.println("opwqajfeiorhgke'whgriuo52hrpoew'ifhguo3rhg'j");
+//			if(!rs.next())
+//			{
+//				System.out.println("cool");
+//			}
 			while (rs.next()) {
 				String yo = "";
 				String mo = "";
 				String to = "";
 				String lo = "";
 				int so;
-				LocalDate la;
+				Date la;
 				int ti;
+				System.out.println("Yolo");
 				yo = rs.getString("Name");
-				mo = rs.getString("CourtType");
+//				mo = rs.getString("CourtType");
 				to = rs.getString("Country");
-				lo = rs.getString("TournamentName");
+//				lo = rs.getString("TournamentName");
 				so = rs.getInt("ATPPoints");
-				la = rs.getDate("DOB").toInstant().atZone(ZoneId.systemDefault()).toLocalDate();;
+				la = rs.getDate("DOB");
 				ti = rs.getInt("YearPro");
-				System.out.println(yo + " " + mo + " " + to + " " + lo + " " + so + " " + la + " " + ti);
+				System.out.println("Yolo");
+				System.out.println(la);
+				System.out.println(yo + " " + to + " " + so + " " + la + " " + ti);
 			}
+			
+//			while (rs.next()) {
+//				String yo = "";
+//				String mo = "";
+//				String to = "";
+//				String lo = "";
+//				int so;
+//				Date la;
+//				int ti;
+//				System.out.println("Yolo");
+//				yo = rs.getString("Name");
+////				mo = rs.getString("CourtType");
+//				to = rs.getString("Country");
+////				lo = rs.getString("TournamentName");
+//				so = rs.getInt("ATPPoints");
+//				la = rs.getDate("DOB");
+//				ti = rs.getInt("YearPro");
+//				System.out.println("Yolo");
+//				System.out.println(la);
+//				System.out.println(yo + " " + to + " " + so + " " + la + " " + ti);
+//			}
 			
 		} catch (SQLException e) {
 			System.out.println("wkehferiofh");
