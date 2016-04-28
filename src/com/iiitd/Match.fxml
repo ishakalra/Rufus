@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <ScrollPane prefHeight="618.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iiitd.MatchController">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="614.0" prefWidth="499.0">
@@ -20,7 +19,7 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Text>
-            <Button fx:id="back" layoutX="44.0" layoutY="23.0" mnemonicParsing="false" onAction="#backb" text="Back" />
+            <Button fx:id="back" layoutX="17.0" layoutY="23.0" mnemonicParsing="false" onAction="#backb" text="Back" />
             <Text layoutX="21.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament" />
             <Text layoutX="21.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament Began" textAlignment="CENTER" wrappingWidth="67.05078125" />
             <ComboBox fx:id="tournament" layoutX="99.0" layoutY="73.0" prefWidth="150.0" />
@@ -32,11 +31,8 @@
             <Text layoutX="162.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Won" />
             <Text layoutX="363.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Lost" />
             <Text layoutX="33.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-            <Text layoutX="33.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country" />
             <ComboBox fx:id="name1" layoutX="117.0" layoutY="201.0" prefWidth="150.0" />
             <ComboBox fx:id="name2" layoutX="317.0" layoutY="201.0" prefWidth="150.0" />
-            <ComboBox fx:id="country2" layoutX="317.0" layoutY="234.0" prefWidth="150.0" />
-            <ComboBox fx:id="country1" layoutX="117.0" layoutY="234.0" prefWidth="150.0" />
             <ComboBox fx:id="court" layoutX="99.0" layoutY="144.0" prefWidth="150.0" />
             <Text layoutX="24.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Court" />
             <Text layoutX="278.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Year" />
@@ -49,9 +45,10 @@
                   <TableColumn fx:id="cwon" prefWidth="66.0" text="Won" />
                   <TableColumn fx:id="clost" prefWidth="70.0" text="Lost" />
                   <TableColumn fx:id="creferee" prefWidth="68.0" text="Referee" />
-                  <TableColumn fx:id="catp" prefWidth="97.0" text="ATP-Points" />
+                  <TableColumn fx:id="catp" prefWidth="97.0" text="Court" />
               </columns>
             </TableView>
+            <Button layoutX="86.0" layoutY="23.0" mnemonicParsing="false" onAction="#entry" prefHeight="31.0" prefWidth="67.0" text="Enter" />
          </children>
       </AnchorPane>
   </content>
