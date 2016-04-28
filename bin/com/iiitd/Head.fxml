@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <ScrollPane minHeight="600.0" minWidth="500.0" prefHeight="603.0" prefWidth="502.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iiitd.HeadController">
    <content>
       <AnchorPane minHeight="600.0" minWidth="500.0">
@@ -57,7 +56,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <PieChart fx:id="pie" layoutX="157.0" layoutY="390.0" prefHeight="169.0" prefWidth="193.0" />
+            <PieChart fx:id="pie" layoutX="34.0" layoutY="390.0" prefHeight="200.0" prefWidth="449.0" />
             <Text layoutX="31.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Head To Head">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -79,6 +78,7 @@
             <Label fx:id="head1" layoutX="193.0" layoutY="348.0" text="Label" />
             <Button fx:id="filter" layoutX="397.0" layoutY="28.0" mnemonicParsing="false" onAction="#apply" text="Apply" />
             <Button fx:id="backb" layoutX="50.0" layoutY="28.0" mnemonicParsing="false" onAction="#back" text="Back" />
+            <Button fx:id="entryb" layoutX="106.0" layoutY="28.0" mnemonicParsing="false" onAction="#entry" text="Entry" />
          </children>
       </AnchorPane>
    </content>
