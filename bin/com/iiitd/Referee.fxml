@@ -15,7 +15,7 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Text>
-            <Button fx:id="back" layoutX="51.0" layoutY="19.0" mnemonicParsing="false" onAction="#backb" text="Back" />
+            <Button fx:id="back" layoutX="26.0" layoutY="19.0" mnemonicParsing="false" onAction="#backb" text="Back" />
             <Button fx:id="apply" layoutX="387.0" layoutY="19.0" mnemonicParsing="false" onAction="#filter" text="Apply Filter" />
             <Text layoutX="23.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
             <ComboBox fx:id="name" layoutX="66.0" layoutY="64.0" prefWidth="150.0" />
@@ -45,6 +45,7 @@
                   <TableColumn fx:id="cmatches" prefWidth="129.0" text="Matches Refereed" />
               </columns>
             </TableView>
+            <Button layoutX="82.0" layoutY="19.0" mnemonicParsing="false" onAction="#entry" text="Enter" />
          </children></AnchorPane>
    </content>
 </ScrollPane>
