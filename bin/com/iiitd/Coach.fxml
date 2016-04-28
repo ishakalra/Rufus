@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <ScrollPane minHeight="600.0" minWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iiitd.CoachController">
    <content>
       <AnchorPane minHeight="597.0" minWidth="498.0" prefHeight="597.0" prefWidth="498.0">
@@ -48,6 +47,7 @@
                   <TableColumn fx:id="ctill" prefWidth="89.0" text="Coaching Till" />
               </columns>
             </TableView>
+            <Button fx:id="entryb" layoutX="101.0" layoutY="15.0" mnemonicParsing="false" onAction="#entry" text="Entry" />
          </children>
       </AnchorPane>
    </content>
