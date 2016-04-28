@@ -10,8 +10,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Date;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +25,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class RefereeController {
 	
@@ -36,7 +40,7 @@ public class RefereeController {
     private ComboBox<String> country;
 
     @FXML
-    private TableColumn<?, ?> cmatches;
+    private TableColumn<Referee,Integer> cmatches;
 
     @FXML
     private ComboBox<String> player1;
@@ -48,7 +52,7 @@ public class RefereeController {
     private ComboBox<String> player2;
 
     @FXML
-    private TableColumn<?, ?> cname;
+    private TableColumn<Referee,String> cname;
 
     @FXML
     private Button back;
@@ -78,10 +82,20 @@ public class RefereeController {
     private ComboBox<String> name;
 
     @FXML
-    private TableColumn<?, ?> ccountry;
+    private TableColumn<Referee,String> ccountry;
 
     @FXML
-    private TableColumn<?, ?> cdob;
+    private TableColumn<Referee,LocalDate> cdob;
+    
+    static ArrayList<Referee> listed = new ArrayList<Referee>();
+    static ObservableList data;
+    
+    private ObservableList getData(){
+    	
+    	ObservableList data = FXCollections.observableList(listed);
+		return data;
+    	
+    }
     
     @FXML
     void entry(ActionEvent event){
@@ -325,9 +339,10 @@ public class RefereeController {
 			statement = connection.createStatement();
 			String query = "SELECT RefereeName,dob,Country,count(*) as mansi FROM referee,matches,tournament where RefereeName=Tref and TournamentName=Tourname and RefereeName like '%" + rname + "%' and " +  "Country like '%" 
 			+ rcountry + "%' and " +  "CourtType like '%" + rcourt + "%' and " + "Tourname like '%" + rtournament + "%' and " + "tyear >= " + ryear + " and tyear <= " + ryr + " and " + "tPlayerWon like '%" + rwon + "%' and " + "tPlayerLost like '%" + rlost + "%' and " 
-			+ "dob >= date('"+date1+"') and DOB<=date('"+date2+"')";
+			+ "dob >= date('"+date1+"') and DOB<=date('"+date2+"') group by RefereeName";
 			rs = statement.executeQuery(query);
 			System.out.println("woefhciuowhdc");
+			listed = new ArrayList<Referee>();
 			while (rs.next()) {
 				String yo = "";
 				String mo = "";
@@ -340,8 +355,10 @@ public class RefereeController {
 				so = rs.getInt("mansi");
 				mo = rs.getString("Country");
 				lo = rs.getDate("dob");
-				
-				System.out.println(yo + " " + so + " " + mo + " " + lo);
+				bo=lo.toString();
+				LocalDate l1 = LocalDate.parse(bo);
+				System.out.println(yo + " " + lo + " " + mo + " " + so);
+				listed.add(new Referee(yo,l1,mo,so));
 			}
 			
 		} catch (SQLException e) {
@@ -359,6 +376,22 @@ public class RefereeController {
 				}
 			}
 		}
+		
+		data = FXCollections.observableList(listed);
+		cname.setCellValueFactory(
+				new PropertyValueFactory<Referee,String>("name")
+		);
+		cdob.setCellValueFactory(
+				new PropertyValueFactory<Referee,LocalDate>("dob")
+		);
+		ccountry.setCellValueFactory(
+				new PropertyValueFactory<Referee,String>("country")
+		);
+		cmatches.setCellValueFactory(
+				new PropertyValueFactory<Referee,Integer>("matches")
+		);
+		//data = getData();
+		refereetable.setItems(data);
     }
 
     @FXML

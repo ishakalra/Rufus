@@ -9,8 +9,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Date;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +24,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class SponsorController {
 	
@@ -35,13 +39,13 @@ public class SponsorController {
     private ComboBox<String> country;
 
     @FXML
-    private TableColumn<?, ?> cplayer;
+    private TableColumn<Sponsor,String> cplayer;
 
     @FXML
     private Button apply;
 
     @FXML
-    private TableColumn<?, ?> cname;
+    private TableColumn<Sponsor,String> cname;
 
     @FXML
     private Button back;
@@ -62,7 +66,7 @@ public class SponsorController {
     private ComboBox<String> tournament;
 
     @FXML
-    private TableColumn<?, ?> cyear;
+    private TableColumn<Sponsor,Integer> cyear;
 
     @FXML
     private ComboBox<Integer> year1;
@@ -71,10 +75,7 @@ public class SponsorController {
     private ComboBox<Integer> year2;
 
     @FXML
-    private TableColumn<?, ?> catp;
-
-    @FXML
-    private TableColumn<?, ?> ctitle;
+    private TableColumn<Sponsor,Integer> catp;
 
     @FXML
     private ComboBox<String> name;
@@ -83,13 +84,23 @@ public class SponsorController {
     private Button entryb;
 
     @FXML
-    private TableColumn<?, ?> ccountry;
+    private TableColumn<Sponsor,String> ccountry;
 
     @FXML
     private TableView<?> sponsortable;
 
     @FXML
     private ComboBox<String> player;
+    
+    static ArrayList<Sponsor> listed = new ArrayList<Sponsor>();
+    static ObservableList data;
+    
+    private ObservableList getData(){
+    	
+    	ObservableList data = FXCollections.observableList(listed);
+		return data;
+    	
+    }
     
     @FXML
     void entry(ActionEvent event) {
@@ -298,6 +309,7 @@ public class SponsorController {
 			rs = statement.executeQuery(query);
 
 			System.out.println("opwqajfeiorhgke'whgriuo52hrpoew'ifhguo3rhg'j");
+			listed = new ArrayList<Sponsor>();
 		
 			while (rs.next()) {
 				String yo = "";
@@ -314,8 +326,7 @@ public class SponsorController {
 				la = rs.getInt("ContractYear");
 				ka = rs.getInt("ATPPoints");
 				
-				System.out.println("hola");
-				System.out.println(yo + " " + mo + " " + to + " " + la + " " + ka);
+				listed.add(new Sponsor(yo,la,mo,ka,to));
 			}
 			
 		} catch (SQLException e) {
@@ -333,7 +344,24 @@ public class SponsorController {
 				}
 			}
 		}
-    	
+		data = FXCollections.observableList(listed);
+		cname.setCellValueFactory(
+				new PropertyValueFactory<Sponsor,String>("name")
+		);
+		cyear.setCellValueFactory(
+				new PropertyValueFactory<Sponsor,Integer>("year")
+		);
+		ccountry.setCellValueFactory(
+				new PropertyValueFactory<Sponsor,String>("player")
+		);
+		catp.setCellValueFactory(
+				new PropertyValueFactory<Sponsor,Integer>("atp")
+		);
+		ccountry.setCellValueFactory(
+				new PropertyValueFactory<Sponsor,String>("country")
+		);
+		//data = getData();
+		sponsortable.setItems(data);
     	
     }
 

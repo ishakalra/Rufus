@@ -12,16 +12,14 @@ public class Sponsor {
 	SimpleStringProperty player;
 	SimpleIntegerProperty atp;
 	SimpleStringProperty country;
-	SimpleIntegerProperty titles;
 	
-	public Sponsor(String name, Integer year, String player, Integer atp, String country, Integer titles)
+	public Sponsor(String name, Integer year, String player, Integer atp, String country)
 	{
 		this.name = new SimpleStringProperty(name);
 		this.year = new SimpleIntegerProperty(year);
 		this.player = new SimpleStringProperty(player);
 		this.atp = new SimpleIntegerProperty(atp);
 		this.country = new SimpleStringProperty(country);
-		this.titles = new SimpleIntegerProperty(titles);
 	}
 
 	public String getName() {
@@ -44,10 +42,6 @@ public class Sponsor {
 		return country.get();
 	}
 
-	public Integer getTitles() {
-		return titles.get();
-	}
-
 	public void setName(String name) {
 		this.name.set(name);;
 	}
@@ -66,10 +60,6 @@ public class Sponsor {
 
 	public void setCountry(String country) {
 		this.country.set(country);;
-	}
-
-	public void setTitles(Integer titles) {
-		this.titles.set(titles);;
 	}
 
 }
